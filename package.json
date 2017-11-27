@@ -1,0 +1,14 @@
+{
+  "name": "riseup_competition",
+  "main": "express.js",
+  "dependencies": {
+    "body-parser": "~1.0.1",
+    "cors": "^2.8.4",
+    "express": "~4.0.0",
+    "mongodb": "^2.2.31",
+    "mongoose": "~3.6.13"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}

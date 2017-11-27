@@ -1,0 +1,28 @@
+.navbar__left {
+  float: left;
+}
+
+.navbar__right {
+  float: right;
+}
+
+.clr {
+  clear: both;
+}
+
+.navbar--color {
+  background-color: #444;
+  color: red;
+  height: 75px;
+}
+
+.logo {
+  width: 150px;
+  height: 40px;
+}
+
+.navbar__current {
+    margin-top: 8px;
+    font-size: 2em;
+    color: #aaa;
+}

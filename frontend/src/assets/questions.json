@@ -1,0 +1,364 @@
+{
+  "questions": [
+    {
+      "question": "Which of the following tag is used to mark a begining of paragraph?",
+      "a": "<td>",
+      "b": "<te>",
+      "c": "<p>",
+      "d": "<dir>",
+      "correct_answer": "<p>",
+      "genre": "HTML"
+    },
+    {
+      "question": "Which of the following features of UNIX may be used for inter process communication?",
+      "a": "Signals",
+      "b": "Pipes",
+      "c": "Semaphore",
+      "d": "All of these",
+      "correct_answer": "All of these",
+      "genre": "Unix"
+    },
+    {
+      "question": "Correct HTML tag for the largest heading is ......",
+      "a": "<heading>",
+      "b": "<h6>",
+      "c": "<h1>",
+      "d": "<head>",
+      "correct_answer": "<h1>",
+      "genre": "HTML"
+    },
+    {
+      "question": "In Descendant Selector , style is applied to element based on ......",
+      "a": "whether element have sub element or not",
+      "b": "whether element have only 2 sub elements or not",
+      "c": "whether element is of particular type or not",
+      "d": "None of These",
+      "correct_answer": "whether element have sub element or not",
+      "genre": "CSS"
+    },
+    {
+      "question": "Which property is used to specify typefaces?",
+      "a": "font-family",
+      "b": "font-name",
+      "c": "font-face",
+      "d": "font-type",
+      "correct_answer": "font-family",
+      "genre": "CSS"
+    },
+    {
+      "question": "HTML stands for?",
+      "a": "Hyper Text Markup Language",
+      "b": "High Text Markup Language",
+      "c": "Hyper Tabular Markup Language",
+      "d": "None of these",
+      "correct_answer": "Hyper Text Markup Language",
+      "genre": "HTML"
+    },
+    {
+      "question": "From which tag descriptive list starts ?",
+      "a": "<LL>",
+      "b": "<DD>",
+      "c": "<DL>",
+      "d": "<DS>",
+      "correct_answer": "<DL>",
+      "genre": "HTML"
+    },
+    {
+      "question": "Which of the following abstract data types can be used to represent a many to many relation?",
+      "a": "Tree",
+      "b": "Plex",
+      "c": "Graph",
+      "d": "Both (b) and (c)",
+      "correct_answer": "Both (b) and (c)",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "A mathematical-model with a collection of operations defined on that model is called .....",
+      "a": "Data Structure",
+      "b": "Abstract Data Type",
+      "c": "Primitive Data Type",
+      "d": "Algorithm",
+      "correct_answer": "Abstract Data Type",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "The minimum number of comparisons required to determine if an integer appears more than n/2 times in a sorted array of n integers is ......",
+      "a": "O(n)",
+      "b": "O(log n)",
+      "c": "O(log n * n)",
+      "d": "O(1)",
+      "correct_answer": "O(log n)",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "The information about an array that is used in a program will be stored in ......",
+      "a": "Symbol Table",
+      "b": "Activation Record",
+      "c": "System Table",
+      "d": "Dope Vector",
+      "correct_answer": "Dope Vector",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "The data structure required to evaluate a postfix expression is .....",
+      "a": "Queue",
+      "b": "Stack",
+      "c": "Array",
+      "d": "Linked List",
+      "correct_answer": "Stack",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "The data structure required to check whether an expression contains balanced parenthesis is .....",
+      "a": "Queue",
+      "b": "Stack",
+      "c": "Array",
+      "d": "Tree",
+      "correct_answer": "Stack",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "The postfix form of A*B+C/D is ......",
+      "a": "*AB/CD+",
+      "b": "AB*CD/+",
+      "c": "A*BC+/D",
+      "d": "ABCD+/ *",
+      "correct_answer": "AB*CD/+",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "Which of the following data structure may give overflow error,even though the current number of element in it is less than its size?",
+      "a": "Simple queue",
+      "b": "Circular queue",
+      "c": "Priority Queues",
+      "d": "None of these",
+      "correct_answer": "Circular queue",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "The initial configuration of a queue is a, b, c, d, ('a' is in the front end). To get the configuration d, c, b, a, one needs a minimum of .......",
+      "a": "2 deletions and 3 additions",
+      "b": "3 deletion and 2 additions",
+      "c": "3 deletions and 3 additions",
+      "d": "3 deletions and 4 additions",
+      "correct_answer": "3 deletions and 3 additions",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "A complete binary tree with the property that the value at each node is at least as large as the values at its children is called .....",
+      "a": "Binary search tree",
+      "b": "Binary tree",
+      "c": "Completely balanced tree",
+      "d": "Heap",
+      "correct_answer": "Heap",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "Traversing a binary tree first root and then left and right subtrees called ........ traversal",
+      "a": "postorder",
+      "b": "preorder",
+      "c": "inorder",
+      "d": "none of these",
+      "correct_answer": "preorder",
+      "genre": "Data Structures"
+    },
+    {
+      "question": "In tuple relational calculus P1 → P2 is equivalent to ......",
+      "a": "(not) P1 OR P2",
+      "b": "P1 OR P2",
+      "c": "P1 AND P2",
+      "d": "P1 AND (not) P2",
+      "correct_answer": "(not) P1 OR P2",
+      "genre": "Database"
+    },
+    {
+      "question": "The natural join is equal to .....",
+      "a": "Cartesian product",
+      "b": "Combination of Union and Cartesian product",
+      "c": "Combination of selection and Cartesian product",
+      "d": "Combination of projection and Cartesian product",
+      "correct_answer": "Combination of selection and Cartesian product",
+      "genre": "Database"
+    },
+    {
+      "question": " In networking terminology UTP means ......",
+      "a": "Unshielded Twisted Pair",
+      "b": "Ubiquitious Teflon Port",
+      "c": "Uniformly Terminating Port",
+      "d": "Unshielded T-connector Port",
+      "correct_answer": "Unshielded Twisted Pair",
+      "genre": "Networks"
+    },
+    {
+      "question": "Which of the following cannot be declared static?",
+      "a": "Class",
+      "b": "Object",
+      "c": "Functions",
+      "d": "Both (a) & (b)",
+      "correct_answer": "Both (a) & (b)",
+      "genre": "OOP"
+    },
+    {
+      "question": "With a single resource, deadlock occurs .....",
+      "a": "if there are more than two processes competing for that resource",
+      "b": "if there are only two processes competing for that resource",
+      "c": "if there is a single process competing for that resource",
+      "d": "none of these",
+      "correct_answer": "none of these",
+      "genre": "OS"
+    },
+    {
+      "question": "Artificial neural network used for .....",
+      "a": "Pattern Recognition",
+      "b": "Classification",
+      "c": "Clustering",
+      "d": "All of these",
+      "correct_answer": "All of these",
+      "genre": "Soft Computing"
+    },
+    {
+      "question": "In which of the following gates, the output is 1, if and only if at least one input is 1?",
+      "a": "NOR",
+      "b": "AND",
+      "c": "OR",
+      "d": "NAND",
+      "correct_answer": "OR",
+      "genre": "Digital Logic"
+    },
+    {
+      "question": "In artificial Neural Network interconnected processing elements are called .....",
+      "a": "nodes or neurons",
+      "b": "weights",
+      "c": "axons",
+      "d": "Soma",
+      "correct_answer": "nodes or neurons",
+      "genre": "Soft Computing"
+    },
+    {
+      "question": "The graph that shows basic blocks and their successor relationship is called ......",
+      "a": "DAG",
+      "b": "Flow graph",
+      "c": "Control graph",
+      "d": "Hamiltonion graph",
+      "correct_answer": "Flow graph",
+      "genre": "Compilers"
+    },
+    {
+      "question": "Relocation bits used by relocating loader are specified by .....",
+      "a": "relocating loader itself",
+      "b": "linker",
+      "c": "assembler",
+      "d": "macro processor",
+      "correct_answer": "linker",
+      "genre": "Compilers"
+    },
+    {
+      "question": "The subcategories of orthographic projection are .....",
+      "a": "cavalier, cabinet, isometric",
+      "b": "cavalier, cabinet",
+      "c": "isometric, dimetric, trimetric",
+      "d": "isometric, cavalier, trimetric",
+      "correct_answer": "isometric, dimetric, trimetric",
+      "genre": "Computer Graphics"
+    },
+    {
+      "question": "What is the maximun number of dimensions an array in C may have?",
+      "a": "2",
+      "b": "8",
+      "c": "20",
+      "d": "No limit. Depends on memory size.",
+      "correct_answer": "No limit. Depends on memory size.",
+      "genre": "C"
+    },
+    {
+      "question": "The main reasons for the success of pipes are ....",
+      "a": "The availability of many filter programs",
+      "b": "UNIX treats devices as files",
+      "c": "It provides a 2-way communication channel",
+      "d": "Both (a) and (b)",
+      "correct_answer": "Both (a) and (b)",
+      "genre": "Unix"
+    },
+    {
+      "question": "Which of the following are not filter programs?",
+      "a": "date",
+      "b": "sort",
+      "c": "cat",
+      "d": "grep",
+      "correct_answer": "date",
+      "genre": "Unix"
+    },
+    {
+      "question": "The order in which operands are evaluated in an expression is predictable if the operator is .....",
+      "a": "*",
+      "b": "+",
+      "c": "%",
+      "d": "&&",
+      "correct_answer": "&&",
+      "genre": "OOP"
+    },
+    {
+      "question": "Main container for <TR>, <TD> and <TH> is ......",
+      "a": "<TABLE>",
+      "b": "<GROUP>",
+      "c": "<DATA>",
+      "d": "All of these",
+      "correct_answer": "<TABLE>",
+      "genre": "HTML"
+    },
+    {
+      "question": "XPATH used to .....",
+      "a": "Address your documents by specifying a location path",
+      "b": "Address the server",
+      "c": "Store the IP address of the server",
+      "d": "None of these",
+      "correct_answer": "Address your documents by specifying a location path",
+      "genre": "XML"
+    },
+    {
+      "question": "Well formed XML ....",
+      "a": "meets certain grammatical rules outlined in the XML 1.0 specification",
+      "b": "doesn't contain DTD's",
+      "c": "is full of formula's",
+      "d": "none of these",
+      "correct_answer": "meets certain grammatical rules outlined in the XML 1.0 specification",
+      "genre": "XML"
+    },
+    {
+      "question": "<Base> tag is designed to appear only between ....",
+      "a": "<HEAD>",
+      "b": "<TITLE>",
+      "c": "<BODY>",
+      "d": "<FORM>",
+      "correct_answer": "<HEAD>",
+      "genre": "HTML"
+    },
+    {
+      "question": "Which tag creates a number/order list?",
+      "a": "<UL>",
+      "b": "<OL>",
+      "c": "<OT>",
+      "d": "None of these",
+      "correct_answer": "<OL>",
+      "genre": "Unix"
+    },
+    {
+      "question": "A high speed communication equipment typically would not be needed for ....",
+      "a": "E-mail",
+      "b": "transferring large volume of data",
+      "c": "supporting communication between nodes in a LAN",
+      "d": "all of these",
+      "correct_answer": "E-mail",
+      "genre": "Networks"
+    },
+    {
+      "question": "The parameter passing mechanism for an array is .....",
+      "a": "call by value",
+      "b": "call by value-result",
+      "c": "call by reference",
+      "d": "none of these",
+      "correct_answer": "call by reference",
+      "genre": "C"
+    }
+  ]
+}

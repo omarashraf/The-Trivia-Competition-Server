@@ -1,0 +1,103 @@
+.main__question-container {
+    min-height: 100vh;
+    background-size: cover;
+    background-image: url('../../assets/img/homepage2.jpg');
+    font-family: cursive;
+    color: #444;
+    background-position: center center;
+}
+
+.alert__missing-option {
+  position: absolute;
+  top: 60px;
+  z-index: 10000;
+}
+
+.navbar__container {
+  min-height: 100px;
+}
+
+.question {
+  font-size: 1.75em;
+}
+
+.questions__main-content {
+  margin-top: 3vh;
+}
+
+.badge__content {
+  left: 38px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.badge__hashtag {
+  padding: 12px;
+  font-size: 1em;
+  background-color: #444;
+}
+
+.card-body {
+  padding: 30px;
+  background-color: #eeeeeebb;
+}
+
+.card {
+  margin-top: 20px;
+  border: 1px solid black;
+}
+
+.question__options {
+  font-size: 1.5em;
+}
+
+.question__answer {
+  font-size: 4em;
+  width: 3em;
+  padding: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+.question__submit {
+  margin-top: 80px;
+}
+
+.gold {
+  color: #DAA520;
+}
+
+.silver {
+  color: #C0C0C0;
+}
+
+.bronze {
+  color: #CD7F32;
+}
+
+.table {
+  font-size: 1.9em;
+}
+
+.table tr th {
+   border-bottom: 2px solid #444;
+   padding: 15px 0px;
+}
+
+.table tr td {
+   border-bottom: 1px solid #444;
+   padding: 15px 0px;
+}
+
+.error_msg {
+  color: red;
+  font-size: 1em;
+}
+
+.timer {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 2vh;
+}
