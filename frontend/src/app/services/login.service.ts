@@ -14,37 +14,37 @@ export class LoginService {
 
   // set session params to those of the current user.
   setSession(session: String): void {
-    this.http.put('http://localhost:3000/session', session, { headers: this.headers }).subscribe((res) => {
+    this.http.put('http://35.161.224.180:3000/session', session, { headers: this.headers }).subscribe((res) => {
     });
   }
 
   // get current session info of the current user.
   getSession(): Observable<any> {
-    return this.http.get('http://localhost:3000/session');
+    return this.http.get('http://35.161.224.180:3000/session');
   }
 
   // destroy the session info of the current user.
   destroySession(): Observable<any> {
     let username = "";
     let newSession = "username=" + username;
-    return this.http.put('http://localhost:3000/session', newSession, { headers: this.headers });
+    return this.http.put('http://35.161.224.180:3000/session', newSession, { headers: this.headers });
   }
 
   // update session info of the current user.
   updateSession(session: String): void {
-    this.http.put('http://localhost:3000/session', session, { headers: this.headers}).subscribe((res) => {
+    this.http.put('http://35.161.224.180:3000/session', session, { headers: this.headers}).subscribe((res) => {
     });
   }
 
   // get the info associated with a certain user.
   getCurrentUserInfo(username: String): Observable<any> {
     let usernameBody = 'username=' + username;
-    return this.http.post('http://localhost:3000/user', usernameBody, { headers: this.headers });
+    return this.http.post('http://35.161.224.180:3000/user', usernameBody, { headers: this.headers });
   }
 
   // update the score of the current user.
   updateScore(scoreUser: String): Observable<any> {
-    return this.http.put('http://localhost:3000/score', scoreUser, { headers: this.headers });
+    return this.http.put('http://35.161.224.180:3000/score', scoreUser, { headers: this.headers });
   }
 
 }

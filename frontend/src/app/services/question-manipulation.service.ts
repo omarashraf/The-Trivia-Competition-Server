@@ -22,7 +22,7 @@ export class QuestionManipulationService {
   // get a list of top players, requires a limit on the number.
   topPlayers(limit: string): Observable<any> {
     let scoreParam = "limit=" + limit;
-    return this.http.post("http://localhost:3000/leaderboard", scoreParam, { headers: this.headers });
+    return this.http.post("http://35.161.224.180:3000/leaderboard", scoreParam, { headers: this.headers });
   }
 
   // set wrong answer flag, when user gets a an answer wrong

@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
 
   // register new user and validate that there is no error
   registerNewUser(registrationData): void {
-    this.http.post("http://localhost:3000/register", registrationData, { headers: this.headers }).toPromise().then((res) => {
+    this.http.post("http://35.161.224.180:3000/register", registrationData, { headers: this.headers }).toPromise().then((res) => {
       console.log("RES --> ", res["_body"]);
       if (res["_body"] === "error") {
         this.errorRegistration = true;
