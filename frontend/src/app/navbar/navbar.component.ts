@@ -21,9 +21,6 @@ export class NavbarComponent implements OnInit {
 
   getCurrentUser(): void {
     this.current = JSON.parse(localStorage.getItem('current'))["username"];
-    if (this.current === undefined || this.current === "") {
-      this.getCurrentUser(); 
-    }
   }
 
   ngOnInit(): void {

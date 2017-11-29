@@ -53,17 +53,26 @@ export class ResultComponent implements OnInit {
 
   // get current score of the current user.
   getCurrentUserScore(): void {
+    console.log("CURRENT --> ", this.currentUser);
     this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
-      this.finalScore = res.json()[0]["score"];
+      console.log("SCORE --> ", res.json());
+      if (res === "" || res === undefined) {
+        this.getCurrentUserScore();
+        console.log("LOG");
+      }
+      else {
+        this.finalScore = res.json()[0]["score"];
+        console.log(this.finalScore);        
+      }
     });
   }
 
   // get top 7 players and set end game flags.
   ngOnInit(): void {
+    this.getCurrentSession();
     this.questionManipulation.topPlayers("7").subscribe((res) => {
       this.topPlayers = res.json();
     });
     this.endResult();
-    this.getCurrentSession();
   }
 }
