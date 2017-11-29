@@ -10,9 +10,9 @@
 .register__card {
   position: absolute;
   left: 48%;
-  top: 40%;
+  top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 40%;
+  width: 42%;
 }
 
 .alert__missing-option {
