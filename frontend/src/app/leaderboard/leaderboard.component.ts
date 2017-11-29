@@ -28,7 +28,7 @@ export class LeaderboardComponent implements OnInit {
   }
 
   getTopTenPlayers(): void {
-    this.questionManipulation.topPlayers("8").subscribe((res) => {
+    this.questionManipulation.topPlayers("10").subscribe((res) => {
       this.topPlayers = res.json();
     });
   }
