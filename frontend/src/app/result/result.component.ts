@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 // imported services.
 import { LoginService } from '../services/login.service';
 import { QuestionManipulationService } from '../services/question-manipulation.service';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
   selector: 'result-comp',
@@ -26,7 +27,8 @@ export class ResultComponent implements OnInit {
     private http: Http,
     private loginService: LoginService,
     private router: Router,
-    private questionManipulation: QuestionManipulationService
+    private questionManipulation: QuestionManipulationService,
+    private localStorageService: LocalStorageService
   ) {
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
@@ -45,10 +47,8 @@ export class ResultComponent implements OnInit {
 
   // get current session info
   getCurrentSession(): void {
-    this.loginService.getSession().subscribe((res) => {
-      this.currentUser = res.json()[0]["username"];
-      this.getCurrentUserScore();
-    });
+    this.currentUser = JSON.parse(localStorage.getItem('current'))["username"];
+    this.getCurrentUserScore();
   }
 
   // get current score of the current user.

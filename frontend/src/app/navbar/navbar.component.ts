@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LoginService } from '../services/login.service';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
     selector: 'ct-navbar',
@@ -14,16 +15,15 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalStorageService
   ) {}
 
   getCurrentUser(): void {
-    this.loginService.getSession().subscribe((res) => {
-      this.current = res.json()[0]["username"];
-      if (this.current === undefined || this.current === "") {
-       this.getCurrentUser(); 
-      }
-    });
+    this.current = JSON.parse(localStorage.getItem('current'))["username"];
+    if (this.current === undefined || this.current === "") {
+      this.getCurrentUser(); 
+    }
   }
 
   ngOnInit(): void {

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 // imported services.
 import { LoginService } from '../services/login.service';
 import { QuestionManipulationService } from '../services/question-manipulation.service';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 
 @Component({
@@ -42,7 +43,8 @@ export class QuestionComponent implements OnInit {
     private loginService: LoginService,
     private questionManipulation: QuestionManipulationService,
     private http: Http,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalStorageService
   ) {
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
@@ -73,16 +75,14 @@ export class QuestionComponent implements OnInit {
         });
       });
 
-      this.loginService.getSession().subscribe((res) => {
-        this.currentQuestionIndex += 1;
-        let newSession = "username=" + this.currentUser;
-        if (this.currentQuestionIndex == this.questionsLen) {
-          this.router.navigate(['./result']);
-        }
-        else {
-          this.loginService.updateSession(newSession);
-        }
-      });
+      this.currentQuestionIndex += 1;
+      let newSession = "username=" + this.currentUser;
+      if (this.currentQuestionIndex == this.questionsLen) {
+        this.router.navigate(['./result']);
+      }
+      else {
+        localStorage.setItem('current', JSON.stringify( {username: this.currentUser, qIndex: this.currentQuestionIndex }));
+      }
     }
     else {
       if (this.optionSelected === "" || this.optionSelected === undefined) {
@@ -150,18 +150,8 @@ export class QuestionComponent implements OnInit {
   }
 
   getCurrentUser(): void {
-    this.loginService.getSession().subscribe((res) => {
-      this.currentUser = res.json()[0]["username"];
-      this.currentQuestionIndex = 0;
-      let scoreAndUsername = 'score=' + 0
-                       + '&username=' + this.currentUser;
-      if (this.currentUser === "" || this.currentUser === undefined) {
-        this.getCurrentUser();
-      }
-      console.log("CURRENT ONINIT --> ", this.currentUser);
-      console.log("CURRENT SESSION --> ", res.json());      
-      this.loginService.updateScore(scoreAndUsername).subscribe();
-    });
+    this.currentUser = JSON.parse(localStorage.getItem('current'))["username"];
+    console.log("CURRENT --> " + this.currentUser);
   }
 
   /*

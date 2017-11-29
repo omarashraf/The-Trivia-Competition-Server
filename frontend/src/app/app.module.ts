@@ -17,6 +17,7 @@ import { RegisterModule } from './register/register.module';
 import { QuestionModule } from './question/question.module';
 import { ResultModule } from './result/result.module';
 import { LeaderboardModule } from './leaderboard/leaderboard.module';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 // imported services
 import { LoginService } from './services/login.service';
@@ -61,7 +62,11 @@ const appRoutes: Routes = [
     RegisterModule,
     QuestionModule,
     ResultModule,
-    LeaderboardModule
+    LeaderboardModule,
+    LocalStorageModule.withConfig({
+      prefix: 'my-app',
+      storageType: 'localStorage'
+    })
   ],
   providers: [
     LoginService,

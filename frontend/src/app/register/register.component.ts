@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 // imported services
 import { LoginService } from '../services/login.service';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
   selector: 'register-comp',
@@ -21,7 +22,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private http: Http,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalStorageService 
   ) {
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
@@ -50,7 +52,8 @@ export class RegisterComponent implements OnInit {
       else {
           let newSession = "username=" + this.username;
           this.errorRegistration = false;
-          this.loginService.setSession(newSession);
+          // this.loginService.setSession(newSession);
+          localStorage.setItem('current', JSON.stringify({ username: this.username, qIndex: 0 }));
           this.router.navigate(['./question']);
         }
     });
@@ -58,6 +61,7 @@ export class RegisterComponent implements OnInit {
 
   // on init component -> destroy the previous session
   ngOnInit() : void {
-    this.loginService.destroySession().subscribe();
+    // this.loginService.destroySession().subscribe();
+    localStorage.setItem('current', JSON.stringify({ username: '', qIndex: '' }));
   }
 }
