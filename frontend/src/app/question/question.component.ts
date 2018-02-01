@@ -163,7 +163,7 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
     this.getCurrentUser();
     this.questionManipulation.getQuestions().subscribe((res) => {
-        this.questions = res.json()["questions"];
+        this.questions = res.json()["soceities_questions"];
         this.questionsLen = this.questions.length;
         this.shuffle();
     });
@@ -171,6 +171,6 @@ export class QuestionComponent implements OnInit {
       this.top3Players = res.json();
     });
     this.questionManipulation.resetWrongAnswerfFlag();
-    this.setCountdown();
+    // this.setCountdown();
   }
 }

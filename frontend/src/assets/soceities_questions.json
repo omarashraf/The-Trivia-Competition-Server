@@ -1,0 +1,418 @@
+{
+  "soceities_questions": [
+    {
+        "question": "'Convolutional Neural Networks can perform various types of transformation (rotations or scaling) in an input'. Is the statement correct True or False?",
+        "a": "True",
+        "b": "False",
+        "c": "Neither",
+        "d": "Both",
+        "correct_answer": "False",
+        "genre": "Data Science"
+    },
+    {
+        "question": "Data Preprocessing steps (viz rotation, scaling) is necessary before you give the data to neural network because neural network cannot do it itself. Which of the following is correct about regularized regression?",
+        "a": "Can help with bias trade-off",
+        "b": "Cannot help with model selection",
+        "c": "Cannot help with variance trade-off",
+        "d": "All of the Mentioned",
+        "correct_answer": "Can help with bias trade-off",
+        "genre": "Data Science"
+    },
+    {
+        "question": "Which of the following method can be used to combine different classifiers ?",
+        "a": "Model stacking",
+        "b": "Model combining",
+        "c": "Model structuring",
+        "d": "None of the Mentioned",
+        "correct_answer": "Model stacking",
+        "genre": "Data Science"
+    },
+    {
+        "question": "Which of the following function can be used for forecasting?",
+        "a": "predict",
+        "b": "forecast",
+        "c": "ets",
+        "d": "all of the Mentioned",
+        "correct_answer": "forecast",
+        "genre": "Data Science"
+    },
+    {
+        "question": "Which of the following is performed by Data Scientist?",
+        "a": "Define the question",
+        "b": "Create reproducible code",
+        "c": "Challenge results",
+        "d": "All of the Mentioned",
+        "correct_answer": "All of the Mentioned",
+        "genre": "Data Science"
+    },
+    {
+        "question": "Which of the following is most important language for Data Science?",
+        "a": "Java",
+        "b": "Ruby",
+        "c": "R",
+        "d": "None of the Mentioned",
+        "correct_answer": "R",
+        "genre": "Data Science"
+    },
+    {
+        "question": "If X predicts Y,it does mean X causes Y",
+        "a": "True",
+        "b": "False",
+        "c": "Neither",
+        "d": "Both",
+        "correct_answer": "False",
+        "genre": "Data Science"
+    },
+    {
+        "question": "The expected value or _______ of a random variable is the center of its distribution.",
+        "a": "mode",
+        "b": "median",
+        "c": "mean",
+        "d": "bayesian inference",
+        "correct_answer": "mean",
+        "genre": "Data Science"
+    },
+    {
+        "question": "The square root of the variance is called the ________ deviation.",
+        "a": "empirical",
+        "b": "mean",
+        "c": "continuous",
+        "d": "standard",
+        "correct_answer": "standard",
+        "genre": "Data Science"
+    },
+    {
+        "question": "_________ computing refers to applications and services that run on a distributed network using virtualized resources.",
+        "a": "Distributed",
+        "b": "Cloud",
+        "c": "Soft",
+        "d": "Parallel",
+        "correct_answer": "Cloud",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following is essential concept related to Cloud?",
+        "a": "Reliability",
+        "b": "Productivity",
+        "c": "Abstraction",
+        "d": "All of the mentioned",
+        "correct_answer": "Abstraction",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Point out the wrong statement:",
+        "a": "All applications benefit from deployment in the cloud",
+        "b": "With cloud computing, you can start very small and become big very fast",
+        "c": "Cloud computing is revolutionary, even if the technology it is built on is evolutionary",
+        "d": "None of the mentioned",
+        "correct_answer": "All applications benefit from deployment in the cloud",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following cloud concept is related to pooling and sharing of resources?",
+        "a": "Polymorphism",
+        "b": "Abstraction",
+        "c": "Virtualization",
+        "d": "None of the mentioned",
+        "correct_answer": "Virtualization",
+        "genre": "Cloud"
+    },
+    {
+        "question": "The most commonly used set of protocols uses ______ as the messaging format.",
+        "a": "XML",
+        "b": "JSON",
+        "c": "BSON",
+        "d": "All of the mentioned",
+        "correct_answer": "XML",
+        "genre": "Cloud"
+    },
+    {
+        "question": "_________ as a Service is a cloud computing infrastructure that creates a development environment upon which applications may be build.",
+        "a": "Infrastructure",
+        "b": "Service",
+        "c": "Platform",
+        "d": "All of the mentioned",
+        "correct_answer": "Platform",
+        "genre": "Cloud"
+    },
+    {
+        "question": "_________ is a cloud computing service model in which hardware is virtualized in the cloud.",
+        "a": "IaaS",
+        "b": "CaaS",
+        "c": "PaaS",
+        "d": "None of the mentioned",
+        "correct_answer": "IaaS",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Point out the correct statement:",
+        "a": "WS-+ services carried over XML messages using the SOAP protocol access remote server applications",
+        "b": "REST stands for Representational State Transfer",
+        "c": "A transaction following the rules of SOAP is considered to be RESTful",
+        "d": "All of the mentioned",
+        "correct_answer": "REST stands for Representational State Transfer",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following is associated with considerable vendor lock-in?",
+        "a": "PaaS",
+        "b": "IaaS",
+        "c": "CaaS",
+        "d": "SaaS",
+        "correct_answer": "PaaS",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Point out the wrong statement:",
+        "a": "The customer takes no responsibility for maintaining the hardware, the software, or the development of the applications",
+        "b": "The vendor is responsible for all the operational aspects of the service",
+        "c": "Google’s App Engine platform is IaaS offering",
+        "d": "None of the mentioned",
+        "correct_answer": "Google’s App Engine platform is IaaS offering",
+        "genre": "Cloud"
+    },
+    {
+        "question": "_________ is the most refined and restrictive service model.",
+        "a": "PaaS",
+        "b": "IaaS",
+        "c": "CaaS",
+        "d": "All of the mentioned",
+        "correct_answer": "PaaS",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Rackspace Cloud Service is an example of:",
+        "a": "PaaS",
+        "b": "IaaS",
+        "c": "CaaS",
+        "d": "All of the mentioned",
+        "correct_answer": "IaaS",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Point out the correct statement:",
+        "a": "Platforms can be based on specific types of development languages, application frameworks, or other constructs",
+        "b": "SaaS is the cloud-based equivalent of shrink-wrapped software",
+        "c": "Software as a Service (SaaS) may be succinctly described as software that is deployed on a hosted service",
+        "d": "All of the mentioned",
+        "correct_answer": "All of the mentioned",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Point out the wrong statement:",
+        "a": "SaaS applications come in all shapes and sizes",
+        "b": "Every computer user is familiar with SaaS systems",
+        "c": "SaaS software is not customizable",
+        "d": "None of the mentioned",
+        "correct_answer": "None of the mentioned",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following is a SaaS characteristic?",
+        "a": "The typical license is subscription-based or usage-based and is billed on a recurring basis",
+        "b": "The software is available over the Internet globally through a browser on demand",
+        "c": "The software and the service are monitored and maintained by the vendor",
+        "d": "All of the mentioned",
+        "correct_answer": "All of the mentioned",
+        "genre": "Cloud"
+    },
+    {
+        "question": "SaaS supports multiple users and provides a shared data model through _________ model.",
+        "a": "single-tenancy",
+        "b": "multi-tenancy",
+        "c": "multiple-instance",
+        "d": "all of the mentioned",
+        "correct_answer": "multi-tenancy",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Point out the wrong statement:",
+        "a": "Abstraction enables the key benefit of cloud computing: shared, ubiquitous access",
+        "b": "Virtualization assigns a logical name for a physical resource and then provides a pointer to that physical resource when a request is made",
+        "c": "All cloud computing applications combine their resources into pools that can be assigned on demand to users",
+        "d": "All of the mentioned",
+        "correct_answer": "All cloud computing applications combine their resources into pools that can be assigned on demand to users",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following type of virtualization is also characteristic of cloud computing?",
+        "a": "Storage",
+        "b": "Application",
+        "c": "CPU",
+        "d": "All of the mentioned",
+        "correct_answer": "All of the mentioned",
+        "genre": "Cloud"
+    },
+    {
+        "question": "The technology used to distribute service requests to resources is referred to as:",
+        "a": "load performing",
+        "b": "load scheduling",
+        "c": "load balancing",
+        "d": "all of the mentioned",
+        "correct_answer": "load balancing",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following network resources can be load balanced?",
+        "a": "Connections through intelligent switches",
+        "b": "DNS",
+        "c": "Storage resources",
+        "d": "All of the mentioned",
+        "correct_answer": "All of the mentioned",
+        "genre": "Cloud"
+    },
+    {
+        "question": "__________ authentication requires the outside use of a network security or trust service",
+        "a": "SSO",
+        "b": "Singlefactor",
+        "c": "Multifactor",
+        "d": "All of the mentioned",
+        "correct_answer": "Multifactor",
+        "genre": "Cloud"
+    },
+    {
+        "question": "______ is one of the more expensive and complex areas of network computing.",
+        "a": "Multifactor Authentication",
+        "b": "Fault tolerancy",
+        "c": "Identity protection",
+        "d": "All of the mentioned",
+        "correct_answer": "Identity protection",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following is provided by Identity as a Service?",
+        "a": "Identity governance",
+        "b": "Provisioning",
+        "c": "Risk and event monitoring",
+        "d": "All of the mentioned",
+        "correct_answer": "All of the mentioned",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Cloud computing is a _______ system and it is necessarily unidirectional in nature.",
+        "a": "stateless",
+        "b": "stateful",
+        "c": "reliable",
+        "d": "all of the mentioned",
+        "correct_answer": "stateless",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following is most important area of concern in cloud computing?",
+        "a": "Security",
+        "b": "Storage",
+        "c": "Scalability",
+        "d": "All of the mentioned",
+        "correct_answer": "Security",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following architectural standards is working with cloud computing industry?",
+        "a": "Service-oriented architecture",
+        "b": "Standardized Web services",
+        "c": "Web-application frameworks",
+        "d": "All of the mentioned",
+        "correct_answer": "Service-oriented architecture",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following type of virtualization is found in hypervisor such as Microsoft’s Hyper-V?",
+        "a": "paravirtualization",
+        "b": "full virtualization",
+        "c": "emulation",
+        "d": "none of the mentioned",
+        "correct_answer": "paravirtualization",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which of the following allows a virtual machine to run on two or more physical processors at the same time?",
+        "a": "Virtual SMP",
+        "b": "Distributed Resource Scheduler",
+        "c": "vNetwork Distributed Switch",
+        "d": "Storage VMotion",
+        "correct_answer": "Virtual SMP",
+        "genre": "Cloud"
+    },
+    {
+        "question": "An organization wants to deploy virtual machines from a service catalog. These virtual machines have software and libraries installed that are used to develop applications. Each virtual machine will be configured with the same IP address and receive OS patches from the Internet. What will be included in the design to support these capabilities?",
+        "a": "VLANs and virtual firewall appliances",
+        "b": "VXLANs and OS encryption",
+        "c": "VSANs and a physical firewall",
+        "d": "VLANs and network QoS",
+        "correct_answer": "VLANs and virtual firewall appliances",
+        "genre": "Cloud"
+    },
+    {
+        "question": "An organization wants to allow users to deploy services on demand. In addition, the organization wants to ensure the services can be customizable and cost information will be presented at the time of deployment. Which cloud management platform component will support these requirements?",
+        "a": "Orchestration Engine",
+        "b": "Hypervisor Element Manager",
+        "c": "Metering Application",
+        "d": "Service Catalog",
+        "correct_answer": "Service Catalog",
+        "genre": "Cloud"
+    },
+    {
+        "question": "A cloud architect has included a metering application in a cloud design. The application resides on a virtual appliance. The application vendor provides guidance for sizing the appliance. What will be part of the sizing calculations for the virtual appliance storage?",
+        "a": "Number of services. Number of metrics. Data retention requirements.",
+        "b": "Number of services.  Number of metrics. Data abstraction requirements.",
+        "c": "Number of segments. Number of users. Data retention policies.",
+        "d": "Number of targets. Number of segments. Data deduplication policies.",
+        "correct_answer": "Number of services. Number of metrics. Data retention requirements.",
+        "genre": "Cloud"
+    },
+    {
+        "question": "Which common support services are often replicated between clouds in a hybrid cloud deployment?",
+        "a": "Authentication, CDN, and DNS",
+        "b": "Authentication, databases, and CDN",
+        "c": "DNS, authentication, and databases",
+        "d": "Databases, CDN, and DNS",
+        "correct_answer": "DNS, authentication, and databases",
+        "genre": "Cloud"
+    },
+    {
+        "question": "An organization is considering the use of a cloud gateway to back up services to a public cloud. They want to use their existing backup application. What should be included in the design to optimize performance on the connection to the targeted cloud storage?",
+        "a": "Compression",
+        "b": "Target-based deduplication",
+        "c": "Control plane abstraction",
+        "d": "Packet encapsulation",
+        "correct_answer": "Compression",
+        "genre": "Cloud"
+    },
+    {
+        "question": "An organization is planning to use a hybrid cloud. Developers will create applications in both environments. The IT staff is concerned about the amount of bandwidth used on the link between clouds. Which recommendation can be provided to the organization to minimize bandwidth requirements?",
+        "a": "Place applications in the public cloud. Place dependent services in the private cloud.",
+        "b": "Place applications in the private cloud. Place dependent services in the public cloud.",
+        "c": "Place applications in either cloud. Place dependent services in the same cloud.",
+        "d": "All are valid recommendations.",
+        "correct_answer": "Place applications in either cloud. Place dependent services in the same cloud.",
+        "genre": "Cloud"
+    },
+    {
+        "question": "A cloud architect is sizing servers for the consumer compute resource pools. The pools will consist of hosts running a hypervisor. The architect has determined the amount of compute resources that will be used by planned services. What other factors should be considered into the sizing calculations?",
+        "a": "Over-commitment ratios and hypervisor compatibility",
+        "b": "CMP message queue size and hypervisor overhead",
+        "c": "Tenant size and encapsulation method",
+        "d": "Over-commitment ratios and hypervisor overhead",
+        "correct_answer": "Over-commitment ratios and hypervisor overhead",
+        "genre": "Cloud"
+    },
+    {
+        "question": "What accurately describes a method for delivering consumable resources using standards, policies, software, and protocols that enable provisioning, control, and configuration through a programmable interface?",
+        "a": "Hyper-converged",
+        "b": "Software-defined",
+        "c": "DevOps",
+        "d": "Converged",
+        "correct_answer": "Software-defined",
+        "genre": "Cloud"
+    },
+    {
+        "question": "A cloud design contains multiple hosts that are running a hypervisor. Each host has only two physical 10Gb network adapters. Each host will support numerous virtual machines that will be connected to any of the 40 VLANs that are defined in the physical infrastructure. These virtual machines will communicate with other virtual machines on the same VLAN. How must the access layer switch ports be configured for each host?",
+        "a": "As trunk ports",
+        "b": "With jumbo frames",
+        "c": "As access ports",
+        "d": "Using MLAG",
+        "correct_answer": "As trunk ports",
+        "genre": "Cloud"
+    }
+  ]
+}
