@@ -101,3 +101,8 @@
   font-weight: bold;
   margin-top: 2vh;
 }
+
+.forfeit-btn {
+  padding: 10px;
+  font-size: 20px;
+}

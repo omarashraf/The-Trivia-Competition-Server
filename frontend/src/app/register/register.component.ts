@@ -35,7 +35,8 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     if (this.username !== "" && this.username !== undefined) {
       let registrationData = 'username=' + this.username + '&email=' + this.email;
-      this.registerNewUser(registrationData);
+      this.errorRegistration = false;
+      this.registerNewUser(registrationData, this.username);
     }
     else {
       this.errorRegistration = true;
@@ -43,25 +44,32 @@ export class RegisterComponent implements OnInit {
   }
 
   // register new user and validate that there is no error
-  registerNewUser(registrationData): void {
-    this.http.post("http://localhost:3000/register", registrationData, { headers: this.headers }).toPromise().then((res) => {
-      console.log("RES --> ", res["_body"]);
-      if (res["_body"] === "error") {
-        this.errorRegistration = true;
+  registerNewUser(registrationData, username): void {
+    this.loginService.getCurrentUserInfo(username).subscribe((res) => {
+      if (res["_body"] === "[]") {
+        this.errorRegistration = false;
+        this.http.post("http://localhost:3000/register", registrationData, { headers: this.headers }).toPromise().then((res) => {
+          console.log("RES --> ", res["_body"]);
+          if (res["_body"] === "error") {
+            this.errorRegistration = true;
+          }
+          else {
+              let newSession = "username=" + this.username;
+              this.errorRegistration = false;
+              localStorage.setItem('current', JSON.stringify({ username: this.username, qIndex: 0 }));
+              this.router.navigate(['./question']);
+            }
+        });
       }
       else {
-          let newSession = "username=" + this.username;
-          this.errorRegistration = false;
-          // this.loginService.setSession(newSession);
-          localStorage.setItem('current', JSON.stringify({ username: this.username, qIndex: 0 }));
-          this.router.navigate(['./question']);
-        }
+        this.errorRegistration = true;
+      }
     });
   }
 
   // on init component -> destroy the previous session
   ngOnInit() : void {
-    // this.loginService.destroySession().subscribe();
     localStorage.setItem('current', JSON.stringify({ username: '', qIndex: '' }));
+    this.errorRegistration = false;
   }
 }

@@ -8,7 +8,11 @@
     </div>
     <div class="row center timer">
       <div class="col-xs-2">Score: {{ currentScore }}</div>
-      <!-- <div class="col-xs-3 col-xs-offset-7">Timer: {{ now }}</div> -->
+      <div class="col-xs-3 col-xs-offset-7">
+        <!-- Timer: {{ now }}</div> -->
+        <button type="button" class="btn btn-danger forfeit-btn" (click)="onForfeit()">
+          Forfeit
+        </button>
     </div>
     <div class="row questions__main-content">
       <div class="col-sm-7">

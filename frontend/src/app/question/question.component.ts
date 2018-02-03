@@ -62,8 +62,6 @@ export class QuestionComponent implements OnInit {
     if (this.optionSelected === this.questions[this.currentQuestionIndex].correct_answer) {
       this.optionSelected = "";
       this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
-        console.log("CURRENT --> ", this.currentUser);
-        console.log("RES --> ", res.json());
         this.currentScore = res.json()[0]["score"];
         this.currentScore++;
         scoreAndUsername = 'score=' + this.currentScore
@@ -96,6 +94,14 @@ export class QuestionComponent implements OnInit {
         this.router.navigate(['./result']);
       }
     }
+  }
+
+  /*
+    when a user forfeit, he loses with his but keeps his last
+    achieved score.
+  */
+  onForfeit(): void {
+    this.router.navigate(['./result']);
   }
 
   // trigger the countdown to start and continue counting down.
