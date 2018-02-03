@@ -413,6 +413,141 @@
         "d": "Using MLAG",
         "correct_answer": "As trunk ports",
         "genre": "Cloud"
+    },
+    {
+        "question": "The huge numbers of devices connected to the Internet of things have to communicate automatically, not via humans. What is this called?",
+        "a": "Bot to Bot (B2B)",
+        "b": "Machine to Machine (M2M)",
+        "c": "InterCloud",
+        "d": "Skynet",
+        "correct_answer": "Machine to Machine (M2M)",
+        "genre": "IoT"
+    },
+    {
+        "question": "What is the size of the IPv6 addressed?",
+        "a": "32 bits",
+        "b": "64 bits",
+        "c": "128 bits",
+        "d": "256 bits",
+        "correct_answer": "128 bits",
+        "genre": "IoT"
+    },
+    {
+        "question": "What is the name of the first recognized IoT device?",
+        "a": "Smart Watch",
+        "b": "ATM",
+        "c": "Radio",
+        "d": "Video Game",
+        "correct_answer": "ATM",
+        "genre": "IoT"
+    },
+    {
+        "question": "_____________________ best describes the MQTT protocol",
+        "a": "Machine-to-Machine (M2M)",
+        "b": "Publish / Subscribe",
+        "c": "Request / Response",
+        "d": "Mesh Networking",
+        "correct_answer": "Request / Response",
+        "genre": "IoT"
+    },
+    {
+        "question": "Which is not one of the features of Internet of Things devices?",
+        "a": "remotely controllable",
+        "b": "programmable",
+        "c": "can turn themselves off if necessary",
+        "d": "all are features",
+        "correct_answer": "all are features",
+        "genre": "IoT"
+    },
+    {
+        "question": "Which is NOT one of the concerns of the Internet of Things?",
+        "a": "data storage standards",
+        "b": "efficiency",
+        "c": "privacy concerns",
+        "d": "cyber security",
+        "correct_answer": "efficiency",
+        "genre": "IoT"
+    },
+    {
+        "question": "Which one is not an element of IoT?",
+        "a": "People",
+        "b": "Process",
+        "c": "Security",
+        "d": "Things",
+        "correct_answer": "Security",
+        "genre": "IoT"
+    },
+    {
+        "question": "What risks and challenges should be considered in the Internet of Everything?",
+        "a": "Privacy and Security",
+        "b": "Energy Consumption",
+        "c": "Network Congestion",
+        "d": "All of the above",
+        "correct_answer": "All of the above",
+        "genre": "IoT"
+    },
+    {
+        "question": "What is IIoT?",
+        "a": "Information Internet of Things",
+        "b": "Industrial Internet of Things",
+        "c": "Innovative Internet of Things",
+        "d": "None of the mentioned",
+        "correct_answer": "Industrial Internet of Things",
+        "genre": "IoT"
+    },
+    {
+        "question": "Where has Dell opened its first European IoT Lab?",
+        "a": "Cambridge",
+        "b": "Amsterdam",
+        "c": "Reykjavik",
+        "d": "Limerick",
+        "correct_answer": "Limerick",
+        "genre": "IoT"
+    },
+    {
+        "question": "Seals have been connected to the Internet of Things?",
+        "a": "True",
+        "b": "False",
+        "c": "Not Sure",
+        "d": "Maybe",
+        "correct_answer": "True",
+        "genre": "IoT"
+    },
+    {
+        "question": "Groningen, Netherlands has Internet-enabled dustbins. What benefit does this provide?",
+        "a": "The bins can report vandals",
+        "b": "The bins can ask to be emptied",
+        "c": "The bins sort recyclable materials",
+        "d": "All of the mentioned",
+        "correct_answer": "The bins can ask to be emptied",
+        "genre": "IoT"
+    },
+    {
+        "question": "Why did the City of London ask a recycling firm to stop a test project using connected recycling bins?",
+        "a": "There were fears of radio-wave exposure",
+        "b": "The bins were tracking people's smartphones",
+        "c": "The bins used too much electricity",
+        "d": "All of the mentioned",
+        "correct_answer": "The bins were tracking people's smartphones",
+        "genre": "IoT"
+    },
+    {
+        "question": "Security expert Eugene Kaspersky calls the IoT what?",
+        "a": "The Internet of Totality",
+        "b": "The Internet of Threats",
+        "c": "The Internet of Teams",
+        "d": "The Internet of Time",
+        "correct_answer": "The Internet of Threats",
+        "genre": "IoT"
+    },
+    {
+        "question": "How many devices will be on the internet by 2020?",
+        "a": "less than 10 billion",
+        "b": "15-30 billion",
+        "c": "30-40 billion",
+        "d": "40+ billion",
+        "correct_answer": "15-30 billion",
+        "genre": "IoT"
     }
   ]
 }
