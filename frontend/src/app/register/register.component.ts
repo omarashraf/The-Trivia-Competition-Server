@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   public score: number;
   public errorRegistration: boolean = false;
   public headers: Headers = new Headers();
+  public domain = "http://10.207.85.122";
 
   constructor(
     private http: Http,
@@ -48,7 +49,7 @@ export class RegisterComponent implements OnInit {
     this.loginService.getCurrentUserInfo(username).subscribe((res) => {
       if (res["_body"] === "[]") {
         this.errorRegistration = false;
-        this.http.post("http://localhost:3000/register", registrationData, { headers: this.headers }).toPromise().then((res) => {
+        this.http.post(this.domain + ":3000/register", registrationData, { headers: this.headers }).toPromise().then((res) => {
           console.log("RES --> ", res["_body"]);
           if (res["_body"] === "error") {
             this.errorRegistration = true;
