@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://10.207.85.122:27017/riseup_db";
+var url = "mongodb://localhost:27017/riseup_db";
 
 var Session = require("./models/session");
 
