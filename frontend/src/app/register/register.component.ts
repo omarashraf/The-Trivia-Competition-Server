@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   public score: number;
   public errorRegistration: boolean = false;
   public headers: Headers = new Headers();
-  public domain = "http://10.207.85.122";
+  public domain = "http://localhost";
 
   constructor(
     private http: Http,

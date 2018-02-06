@@ -14,9 +14,6 @@ var InitDB = require('./create_db');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.listen(3000, function() {
-  console.log("Listening on port 3000..");
-});
 
 mongoose.connect(mongoDB, function(err, res) {
   if (err) {
@@ -116,4 +113,8 @@ app.put("/session", function(req, res) {
       res.send(user);
    }
   });
+});
+
+app.listen(3000, function() {
+  console.log("Listening on port 3000..");
 });
