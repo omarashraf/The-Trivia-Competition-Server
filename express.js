@@ -14,7 +14,6 @@ var InitDB = require('./create_db');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-
 mongoose.connect(mongoDB, function(err, res) {
   if (err) {
     console.log("Error --> "+ err);
