@@ -1,6 +1,6 @@
 var express = require("express");
 var mongoose = require("mongoose");
-var mongoDB = "mongodb://localhost:27017/riseup_db";
+var mongoDB = "mongodb://10.207.85.122:27017/riseup_db";
 var bodyParser = require("body-parser");
 var app = express();
 var userCtrl = require("./controllers/user_ctrl");

@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var mongoDB = "mongodb://localhost:27017/riseup_db";
+var mongoDB = "mongodb://10.207.85.122:27017/riseup_db";
 var Question = require("./models/question.js");
 
 mongoose.connect(mongoDB, function(err, res) {
