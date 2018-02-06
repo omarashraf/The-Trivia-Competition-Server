@@ -9,7 +9,7 @@ export class QuestionManipulationService {
   public wrongAns: boolean = false;
   public timesUp: boolean = false;
   public headers: Headers = new Headers();
-  public domain = "http://localhost";
+  public domain = "http://10.76.139.18";
 
   constructor(private http: Http) {
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
