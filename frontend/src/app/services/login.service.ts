@@ -7,7 +7,7 @@ import "rxjs";
 export class LoginService {
 
   public headers: Headers = new Headers();
-  public domain = "http://10.76.139.18";
+  public domain = "http://localhost";
 
   constructor(private http: Http) {
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -39,6 +39,7 @@ export class LoginService {
 
   // get the info associated with a certain user.
   getCurrentUserInfo(username: String): Observable<any> {
+    console.log("Login service");
     let usernameBody = 'username=' + username;
     return this.http.post(this.domain + ':3000/user', usernameBody, { headers: this.headers });
   }

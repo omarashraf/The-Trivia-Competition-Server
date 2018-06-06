@@ -9,20 +9,8 @@ var cors = require('cors');
 var User = require("./models/user");
 var Session = require("./models/session");
 
-var InitDB = require('./create_db');
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-
-mongoose.connect(mongoDB, function(err, res) {
-  if (err) {
-    console.log("Error --> "+ err);
-  }
-  else {
-    console.log("Succeeded DB connection");
-  }
-  InitDB.initDB();
-});
 
 app.get("/", function(req, res) {
   res.send("Homepage");
@@ -75,7 +63,6 @@ app.post("/register", function(req, res) {
     email: req.body.email,
     score: 0
   });
-
   user.save(function(err) {
     if (err) {
       res.send("error");
@@ -116,4 +103,13 @@ app.put("/session", function(req, res) {
 
 app.listen(3000, function() {
   console.log("Listening on port 3000..");
+});
+
+mongoose.connect(mongoDB, function(err, res) {
+  if (err) {
+    console.log("Error --> "+ err);
+  }
+  else {
+    console.log("Succeeded DB connection");
+  }
 });
