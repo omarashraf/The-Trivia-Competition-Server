@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 import "rxjs";
 
 @Injectable()
@@ -9,9 +10,10 @@ export class QuestionManipulationService {
   public wrongAns: boolean = false;
   public timesUp: boolean = false;
   public headers: Headers = new Headers();
-  public domain = "http://localhost";
+  public domain = environment.apiUrl;
 
   constructor(private http: Http) {
+    // adding content-type for all requests in this service
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
 
@@ -23,7 +25,7 @@ export class QuestionManipulationService {
   // get a list of top players, requires a limit on the number.
   topPlayers(limit: string): Observable<any> {
     let scoreParam = "limit=" + limit;
-    return this.http.post(this.domain + ":3000/leaderboard", scoreParam, { headers: this.headers });
+    return this.http.post(this.domain + "/leaderboard", scoreParam, { headers: this.headers });
   }
 
   // set wrong answer flag, when user gets a an answer wrong

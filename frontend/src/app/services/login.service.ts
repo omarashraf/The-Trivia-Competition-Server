@@ -1,27 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 import "rxjs";
 
 @Injectable()
 export class LoginService {
 
   public headers: Headers = new Headers();
-  public domain = "http://localhost";
+  public domain = environment.apiUrl;
 
   constructor(private http: Http) {
+    // adding content-type for all requests in this service
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
 
-  // get the info associated with a certain user.
+  // get the info associated with a certain user
   getCurrentUserInfo(username: String): Observable<any> {
     let usernameBody = 'username=' + username;
-    return this.http.post(this.domain + ':3000/user', usernameBody, { headers: this.headers });
+    return this.http.post(this.domain + '/user', usernameBody, { headers: this.headers });
   }
 
-  // update the score of the current user.
+  // register new user
+  registerNewUser(registrationData): Observable<any> {
+    return this.http.post(this.domain + "/register", registrationData, { headers: this.headers });
+  }
+
+  // update the score of the current user
   updateScore(scoreUser: String): Observable<any> {
-    return this.http.put(this.domain + ':3000/score', scoreUser, { headers: this.headers });
+    return this.http.put(this.domain + '/score', scoreUser, { headers: this.headers });
   }
 
 }

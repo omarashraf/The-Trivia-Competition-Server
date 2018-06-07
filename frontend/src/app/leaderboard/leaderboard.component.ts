@@ -23,17 +23,16 @@ export class LeaderboardComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private questionManipulation: QuestionManipulationService
-  ) {
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-  }
+  ) {}
 
+  // get top 10 players
   getTopTenPlayers(): void {
     this.questionManipulation.topPlayers("10").subscribe((res) => {
       this.topPlayers = res.json();
     });
   }
 
-  // get top 10 players.
+  // get top 10 players whenever this component is initialized
   ngOnInit(): void {
     this.getTopTenPlayers();
     Observable.interval(10000).subscribe(x => {

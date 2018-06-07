@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 
 // imported services.
@@ -24,14 +23,11 @@ export class ResultComponent implements OnInit {
   public finalScore: number;
 
   constructor(
-    private http: Http,
     private loginService: LoginService,
     private router: Router,
     private questionManipulation: QuestionManipulationService,
     private localStorageService: LocalStorageService
-  ) {
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-  }
+  ) {}
 
   // set status of the end game.
   endResult(): void {
@@ -53,21 +49,17 @@ export class ResultComponent implements OnInit {
 
   // get current score of the current user.
   getCurrentUserScore(): void {
-    console.log("CURRENT --> ", this.currentUser);
     this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
-      console.log("SCORE --> ", res.json());
       if (res === "" || res === undefined) {
         this.getCurrentUserScore();
-        console.log("LOG");
       }
       else {
         this.finalScore = res.json()[0]["score"];
-        console.log(this.finalScore);        
       }
     });
   }
 
-  // get top 7 players and set end game flags.
+  // get top 7 players and set end game flags when this component is initialized.
   ngOnInit(): void {
     this.getCurrentSession();
     this.questionManipulation.topPlayers("7").subscribe((res) => {

@@ -19,10 +19,12 @@ export class NavbarComponent implements OnInit {
     private localStorageService: LocalStorageService
   ) {}
 
+  // get current user stored in localStorage
   getCurrentUser(): void {
     this.current = JSON.parse(localStorage.getItem('current'))["username"];
   }
 
+  // username is set in nav bar if the user is now playing/viewing leaderboard
   ngOnInit(): void {
     if (this.router.url === "/leaderboard" || this.router.url === "/register") {
       this.current = "";

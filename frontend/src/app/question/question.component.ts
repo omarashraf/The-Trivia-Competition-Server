@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 
 // imported services.
@@ -36,18 +35,13 @@ export class QuestionComponent implements OnInit {
   public n: number = 0;
   public top3Players = [];
 
-  public headers: Headers = new Headers();
-
 
   constructor(
     private loginService: LoginService,
     private questionManipulation: QuestionManipulationService,
-    private http: Http,
     private router: Router,
     private localStorageService: LocalStorageService
-  ) {
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-  }
+  ) {}
 
   /*
     prompt the user with a new question and update score in case of
@@ -60,6 +54,11 @@ export class QuestionComponent implements OnInit {
     this.showAlert = false;
     let scoreAndUsername;
     if (this.optionSelected === this.questions[this.currentQuestionIndex].correct_answer) {
+
+      /*
+        - update current user score
+        - update the leaderboard with the 3 top players (real-time update)
+      */
       this.optionSelected = "";
       this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
         this.currentScore = res.json()[0]["score"];
@@ -73,8 +72,8 @@ export class QuestionComponent implements OnInit {
         });
       });
 
+      // in case a player finishes all questions, then the result view is prompted.
       this.currentQuestionIndex += 1;
-      let newSession = "username=" + this.currentUser;
       if (this.currentQuestionIndex == this.questionsLen) {
         this.router.navigate(['./result']);
       }
@@ -84,9 +83,11 @@ export class QuestionComponent implements OnInit {
     }
     else {
       if (this.optionSelected === "" || this.optionSelected === undefined) {
+        // error message on not selecting an answer
         this.showAlert = true;
       }
       else {
+        // in case of wrong answer, the result view is prompted with current score
         this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
           this.currentScore = res.json()[0]["score"];
         });
@@ -97,14 +98,14 @@ export class QuestionComponent implements OnInit {
   }
 
   /*
-    when a user forfeit, he loses with his but keeps his last
+    when a user forfeit, he loses but keeps his/her last
     achieved score.
   */
   onForfeit(): void {
     this.router.navigate(['./result']);
   }
 
-  // trigger the countdown to start and continue counting down.
+  // trigger the countdown to start and continue counting down (not used not).
   setCountdown(): void {
     let timeArray = this.now.split(/[:]+/);
     let m = timeArray[0];
@@ -128,7 +129,7 @@ export class QuestionComponent implements OnInit {
     }, 1000);
   }
 
-  // handle the seconds display regarding the countdown.
+  // handle the seconds display regarding the countdown (not used now).
   checkSecond(sec: number): String {
     if (sec < 10 && sec >= 0) {
       return "0" + String(sec);
@@ -155,16 +156,15 @@ export class QuestionComponent implements OnInit {
       this.optionSelected = entry;
   }
 
+  // get current user from localStorage
   getCurrentUser(): void {
     this.currentUser = JSON.parse(localStorage.getItem('current'))["username"];
-    console.log("CURRENT --> " + this.currentUser);
   }
 
   /*
-    on init component ->
-      -shuffle questions.
-      -get session info.
-      -render top 3 players.
+    on init component:
+      - shuffle questions.
+      - render top 3 players.
   */
   ngOnInit(): void {
     this.getCurrentUser();
@@ -176,9 +176,7 @@ export class QuestionComponent implements OnInit {
     this.top3Players = [];
     this.questionManipulation.topPlayers("3").subscribe((res) => {
       this.top3Players = res.json();
-      console.log("TOP 3 PLAYERS AFTER REQUEST", this.top3Players);
     });
     this.questionManipulation.resetWrongAnswerfFlag();
-    // this.setCountdown();
   }
 }
