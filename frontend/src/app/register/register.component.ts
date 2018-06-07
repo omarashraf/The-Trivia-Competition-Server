@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
 
   // register new user and validate that there is no error
   registerNewUser(registrationData, username): void {
-    console.log("HERE we are");
     this.loginService.getCurrentUserInfo(username).subscribe((res) => {
       console.log("RES --> ", res);
       if (res["_body"] === "[]") {

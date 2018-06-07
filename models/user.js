@@ -8,12 +8,11 @@ var userSchema = new mongoose.Schema({
     index: true,
     unique: true
   },
-  email: {
-    type: String,
-    lowercase: true,
-    required: true,
-    unique: true
-  },
+  // email: {
+  //   type: String,
+  //   lowercase: true,
+  //   unique: true
+  // },
   score: {
     type: Number
   }

@@ -1,24 +1,28 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var mongoDB = "mongodb://localhost:27017/riseup_db";
-var bodyParser = require("body-parser");
+
 var app = express();
-var userCtrl = require("./controllers/user_ctrl");
 var cors = require('cors');
+var bodyParser = require("body-parser");
 
 var User = require("./models/user");
-var Session = require("./models/session");
+var userCtrl = require("./controllers/user_ctrl");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
+// endpoint for testing
 app.get("/", function(req, res) {
   res.send("Homepage");
 });
 
-// get the ranking of a certain number of players
+/*
+  - get the ranking of a certain number of players
+  - need to have the number of top players (in the body of the request) required to be returned
+*/
 app.post("/leaderboard", function(req, res) {
-  User.find({}).sort({score: -1}).limit(req.body.limit).execFind(function(err, docs) {
+  User.find({}).sort({score: -1}).limit(parseInt(req.body.limit)).exec(function(err, docs) {
     if (err) {
       res.send(err);
     }
@@ -28,7 +32,10 @@ app.post("/leaderboard", function(req, res) {
   });
 });
 
-// get a specific user
+/*
+  - get a specific user
+  - need to have the username in the body of the request
+*/
 app.post('/user', function(req, res) {
   User.find({ username: req.body.username }, function(err, user) {
     if (err) {
@@ -40,7 +47,10 @@ app.post('/user', function(req, res) {
   })
 });
 
-// update score of specific user
+/*
+  - update score of specific user
+  - need to have the score in the body of the request
+*/
 app.put("/score", function(req, res) {
   var score = {
     score: req.body.score
@@ -56,11 +66,14 @@ app.put("/score", function(req, res) {
   });
 });
 
-// add a new user in the db + set the session
+/*
+  - add a new user in the db
+  - need to have the username in the body of the request
+  - score is set to 0 initially
+*/
 app.post("/register", function(req, res) {
   var user = new User ({
     username: req.body.username,
-    email: req.body.email,
     score: 0
   });
   user.save(function(err) {
@@ -73,38 +86,13 @@ app.post("/register", function(req, res) {
   });
 });
 
-// get the session record
-app.get('/session', function(req, res) {
-  Session.find({}).execFind(function(err, session) {
-    if (err) {
-      res.send("error");
-    }
-    else {
-      res.send(session);
-    }
-  });
-});
-
-// update session
-app.put("/session", function(req, res) {
-  var newSession = {
-    username: req.body.username,
-    qIndex: req.body.qIndex
-  };
-  Session.findOneAndUpdate({}, newSession, {new: true}, function(err, user) {
-   if (err) {
-     res.send("err");
-   }
-   else {
-      res.send(user);
-   }
-  });
-});
-
+// app is running on port 3000
+// TODO: set port among env variables
 app.listen(3000, function() {
   console.log("Listening on port 3000..");
 });
 
+// db connection through mongoose and printing status in console
 mongoose.connect(mongoDB, function(err, res) {
   if (err) {
     console.log("Error --> "+ err);

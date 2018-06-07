@@ -173,8 +173,10 @@ export class QuestionComponent implements OnInit {
         this.questionsLen = this.questions.length;
         this.shuffle();
     });
+    this.top3Players = [];
     this.questionManipulation.topPlayers("3").subscribe((res) => {
       this.top3Players = res.json();
+      console.log("TOP 3 PLAYERS AFTER REQUEST", this.top3Players);
     });
     this.questionManipulation.resetWrongAnswerfFlag();
     // this.setCountdown();
