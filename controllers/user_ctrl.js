@@ -17,12 +17,18 @@ function getLeaderboard(req, res) {
 }
 
 function getUser(req, res) {
-    User.find({ email: req.query.email }, function(err, user) {
+    User.findOne({ email: req.query.email }, function(err, user) {
         if (err) {
-        res.status(400).send(err);
+          res.status(400).send(err);
         }
         else {
-        res.send(user);
+          if(user) {
+            user = generateVerificationCode(user);
+            // res.send(user);
+          }else {
+            res.send(user)
+          }
+          
         }
     })
 }
@@ -53,16 +59,21 @@ function registerUser(req, res) {
         res.status(400).send(err);
       }
       else {
-        user = JSON.parse(JSON.stringify(user));
-        verificationCode = Math.floor(Math.random() * 10000);
-        MailService.sendEmail(req.body.email,
-          'Welcome to Trivia Competition',
-          'Your Verification Code is '+verificationCode
-        );
-        user["verificationCode"] = verificationCode;
+        user = generateVerificationCode(user);
         return res.send(user);
       }
     });
+}
+
+function generateVerificationCode(user) {
+  user = JSON.parse(JSON.stringify(user));
+  verificationCode = Math.floor(1000 + Math.random() * 10000);
+  MailService.sendEmail(user['email'],
+    'Welcome to Trivia Competition',
+    'Your Verification Code is '+verificationCode
+  );
+  user["verificationCode"] = verificationCode;
+  return user;
 }
 
 module.exports = {

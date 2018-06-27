@@ -16,9 +16,8 @@ export class LoginService {
   }
 
   // get the info associated with a certain user
-  getCurrentUserInfo(username: String): Observable<any> {
-    let usernameBody = 'username=' + username;
-    return this.http.post(this.domain + '/user', usernameBody, { headers: this.headers });
+  getCurrentUserInfo(email: String): Observable<any> {
+    return this.http.get(this.domain + '/user?email=' + email, { headers: this.headers });
   }
 
   // register new user
