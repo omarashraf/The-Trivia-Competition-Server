@@ -1,4 +1,5 @@
 var User = require("../models/user");
+const MailService = require("../services/mail_service");
 
 function testEndpoint(req, res) {
     res.send("Homepage");
@@ -7,7 +8,7 @@ function testEndpoint(req, res) {
 function getLeaderboard(req, res) {
     User.find({}).sort({score: -1}).limit(parseInt(req.body.limit)).exec(function(err, docs) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         res.send(docs);
@@ -16,9 +17,9 @@ function getLeaderboard(req, res) {
 }
 
 function getUser(req, res) {
-    User.find({ username: req.body.username }, function(err, user) {
+    User.find({ email: req.query.email }, function(err, user) {
         if (err) {
-        res.send('err --> ', err);
+        res.status(400).send(err);
         }
         else {
         res.send(user);
@@ -31,9 +32,9 @@ function updateScore(req, res) {
       score: req.body.score
     }
   
-    User.findOneAndUpdate({ username: req.body.username}, score, {new: true}, function(err, user) {
+    User.findOneAndUpdate({ email: req.body.email}, score, {new: true}, function(err, user) {
      if (err) {
-       res.send(err);
+       res.status(400).send(err);
      }
      else {
         res.send(user);
@@ -42,16 +43,24 @@ function updateScore(req, res) {
 }
 
 function registerUser(req, res) {
+  console.log(req.body);
     var user = new User ({
-      username: req.body.username,
+      email: req.body.email,
       score: 0
     });
     user.save(function(err) {
       if (err) {
-        res.send("error");
+        res.status(400).send(err);
       }
       else {
-        res.send("ok");
+        user = JSON.parse(JSON.stringify(user));
+        verificationCode = Math.floor(Math.random() * 10000);
+        MailService.sendEmail(req.body.email,
+          'Welcome to Trivia Competition',
+          'Your Verification Code is '+verificationCode
+        );
+        user["verificationCode"] = verificationCode;
+        return res.send(user);
       }
     });
 }

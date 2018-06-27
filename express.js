@@ -5,9 +5,11 @@ var mongoDB = "mongodb://localhost:27017/riseup_db";
 var app = express();
 var cors = require('cors');
 var bodyParser = require("body-parser");
+const validate = require('express-validation');
 
 var User = require("./models/user");
 var userCtrl = require("./controllers/user_ctrl");
+var userValidation = require("./validations/user_validations");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -23,9 +25,9 @@ app.post("/leaderboard", userCtrl.getLeaderboard);
 
 /*
   - get a specific user
-  - need to have the username in the body of the request
+  - need to have the email in the body of the request
 */
-app.post('/user', userCtrl.getUser);
+app.get('/user', userCtrl.getUser);
 
 /*
   - update score of specific user
@@ -35,15 +37,19 @@ app.put("/score", userCtrl.updateScore);
 
 /*
   - add a new user in the db
-  - need to have the username in the body of the request
+  - need to have the email in the body of the request
   - score is set to 0 initially
 */
-app.post("/register", userCtrl.registerUser);
+app.post("/register", validate(userValidation.register), userCtrl.registerUser);
 
 // app is running on port 3000
 // TODO: set port among env variables
 app.listen(3000, function() {
   console.log("Listening on port 3000..");
+});
+
+app.use((err, req, res, next) => {
+  res.status(400).json(err);
 });
 
 // db connection through mongoose and printing status in console
