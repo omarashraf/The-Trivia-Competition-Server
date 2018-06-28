@@ -6,7 +6,8 @@ function testEndpoint(req, res) {
 }
 
 function getLeaderboard(req, res) {
-    User.find({}).sort({score: -1}).limit(parseInt(req.body.limit)).exec(function(err, docs) {
+  console.log("Leaderboard");
+    User.find({}).sort({score: -1}).limit(parseInt(req.query.limit)).exec(function(err, docs) {
       if (err) {
         res.status(400).send(err);
       }
@@ -17,14 +18,15 @@ function getLeaderboard(req, res) {
 }
 
 function getUser(req, res) {
-    User.findOne({ email: req.query.email }, function(err, user) {
+  console.log("FINDING USER");
+    User.findOne({ email: req.params.email }, function(err, user) {
         if (err) {
           res.status(400).send(err);
         }
         else {
           if(user) {
             user = generateVerificationCode(user);
-            // res.send(user);
+            res.send(user);
           }else {
             res.send(user)
           }
@@ -38,7 +40,7 @@ function updateScore(req, res) {
       score: req.body.score
     }
   
-    User.findOneAndUpdate({ email: req.body.email}, score, {new: true}, function(err, user) {
+    User.findOneAndUpdate({ email: req.params.email}, score, {new: true}, function(err, user) {
      if (err) {
        res.status(400).send(err);
      }
@@ -49,7 +51,6 @@ function updateScore(req, res) {
 }
 
 function registerUser(req, res) {
-  console.log(req.body);
     var user = new User ({
       email: req.body.email,
       score: 0

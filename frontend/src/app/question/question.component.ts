@@ -63,9 +63,7 @@ export class QuestionComponent implements OnInit {
       this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
         this.currentScore = res.json()[0]["score"];
         this.currentScore++;
-        scoreAndUsername = 'score=' + this.currentScore
-                         + '&username=' + this.currentUser;
-        this.loginService.updateScore(scoreAndUsername).subscribe((res) => {
+        this.loginService.updateScore(this.currentUser, this.currentScore).subscribe((res) => {
           this.questionManipulation.topPlayers("3").subscribe((res) => {
             this.top3Players = res.json();
           });
@@ -158,7 +156,7 @@ export class QuestionComponent implements OnInit {
 
   // get current user from localStorage
   getCurrentUser(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('current'))["username"];
+    this.currentUser = JSON.parse(localStorage.getItem('current'))["email"];
   }
 
   /*

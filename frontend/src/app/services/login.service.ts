@@ -12,12 +12,12 @@ export class LoginService {
 
   constructor(private http: Http) {
     // adding content-type for all requests in this service
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    this.headers.append('Content-Type', 'application/json');
   }
 
   // get the info associated with a certain user
   getCurrentUserInfo(email: String): Observable<any> {
-    return this.http.get(this.domain + '/user?email=' + email, { headers: this.headers });
+    return this.http.get(this.domain + `/users/${email}`, { headers: this.headers });
   }
 
   // register new user
@@ -26,8 +26,11 @@ export class LoginService {
   }
 
   // update the score of the current user
-  updateScore(scoreUser: String): Observable<any> {
-    return this.http.put(this.domain + '/score', scoreUser, { headers: this.headers });
+  updateScore(email: String, score:number): Observable<any> {
+    let body = {
+      "score": score
+    };
+    return this.http.put(this.domain + `users/${email}/score`, body, { headers: this.headers });
   }
 
 }
