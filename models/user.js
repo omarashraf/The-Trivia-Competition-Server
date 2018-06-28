@@ -1,18 +1,20 @@
 var mongoose = require("mongoose");
 
 var userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    lowercase: true,
-    required: true,
-    index: true,
-    unique: true
-  },
-  // email: {
+  // username: {
   //   type: String,
   //   lowercase: true,
+  //   required: true,
+  //   index: true,
   //   unique: true
   // },
+  email: {
+    type: String,
+    lowercase: true,
+    unique: true,
+    required:true,
+    index: true,
+  },
   score: {
     type: Number
   }
