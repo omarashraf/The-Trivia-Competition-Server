@@ -31,7 +31,7 @@ export class QuestionComponent implements OnInit {
   public optionSelected = "";
   public currentScore: number = 0;
   public showAlert: boolean = false;
-  public now: string = "04:00";
+  public now: string = "02:00";
   public n: number = 0;
   public top3Players = [];
 
@@ -173,6 +173,7 @@ export class QuestionComponent implements OnInit {
         this.questionsLen = this.questions.length;
         this.shuffle();
     });
+    this.setCountdown();
     this.top3Players = [];
     this.questionManipulation.topPlayers("3").subscribe((res) => {
       this.top3Players = res.json();

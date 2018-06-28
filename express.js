@@ -1,6 +1,6 @@
 var express = require("express");
 var mongoose = require("mongoose");
-var mongoDB = "mongodb://localhost:27017/riseup_db";
+var mongoDB = "mongodb://127.0.0.1:27017/riseup_db";
 
 var app = express();
 var cors = require('cors');
