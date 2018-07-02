@@ -94,3 +94,9 @@
   color: green;
   font-weight: bold;
 }
+
+@media screen and (max-width: 1265px) {
+  .table {
+    font-size: 1em;
+  }
+}

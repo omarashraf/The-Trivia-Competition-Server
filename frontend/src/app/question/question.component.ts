@@ -61,11 +61,9 @@ export class QuestionComponent implements OnInit {
       */
       this.optionSelected = "";
       this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
-        this.currentScore = res.json()[0]["score"];
+        this.currentScore = res.json()["score"];
         this.currentScore++;
-        scoreAndUsername = 'score=' + this.currentScore
-                         + '&username=' + this.currentUser;
-        this.loginService.updateScore(scoreAndUsername).subscribe((res) => {
+        this.loginService.updateScore(this.currentUser, this.currentScore).subscribe((res) => {
           this.questionManipulation.topPlayers("3").subscribe((res) => {
             this.top3Players = res.json();
           });
@@ -78,7 +76,7 @@ export class QuestionComponent implements OnInit {
         this.router.navigate(['./result']);
       }
       else {
-        localStorage.setItem('current', JSON.stringify( {username: this.currentUser, qIndex: this.currentQuestionIndex }));
+        localStorage.setItem('current', JSON.stringify( {email: this.currentUser, qIndex: this.currentQuestionIndex }));
       }
     }
     else {
@@ -89,7 +87,7 @@ export class QuestionComponent implements OnInit {
       else {
         // in case of wrong answer, the result view is prompted with current score
         this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
-          this.currentScore = res.json()[0]["score"];
+          this.currentScore = res.json()["score"];
         });
         this.questionManipulation.wrongAnswer();
         this.router.navigate(['./result']);
@@ -158,7 +156,10 @@ export class QuestionComponent implements OnInit {
 
   // get current user from localStorage
   getCurrentUser(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('current'))["username"];
+    this.currentUser = JSON.parse(localStorage.getItem('current'))["email"];
+    this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
+      this.currentScore = res.json()["score"];
+    });
   }
 
   /*
