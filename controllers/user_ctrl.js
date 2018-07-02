@@ -28,7 +28,9 @@ function getUser(req, res) {
             user = generateVerificationCode(user);
             res.send(user);
           }else {
-            res.send(user)
+            res.status(404).send({
+              "message": "Not Found"
+            })
           }
           
         }

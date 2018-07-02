@@ -50,12 +50,9 @@ export class ResultComponent implements OnInit {
   // get current score of the current user.
   getCurrentUserScore(): void {
     this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
-      if (res === "" || res === undefined) {
-        this.getCurrentUserScore();
-      }
-      else {
-        this.finalScore = res.json()[0]["score"];
-      }
+      this.finalScore = res.json()["score"];
+    }, (error) => {
+      this.router.navigate(['./register']);
     });
   }
 

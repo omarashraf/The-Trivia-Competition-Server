@@ -58,13 +58,12 @@ export class RegisterComponent implements OnInit {
           this.verificationCode = JSON.parse(res["_body"])["verificationCode"];
           this.verificationCodeInput = true;
         },(err)=> {
-          console.log(err);
           this.errorRegistration = true;
         });
       }
       else {
         this.verificationCode = JSON.parse(res["_body"])["verificationCode"];
-        console.log(this.verificationCode);
+        localStorage.setItem('current', JSON.stringify({ email: email, qIndex: 0 }));
         this.verificationCodeInput = true;
         this.errorRegistration = false;
 
@@ -83,7 +82,7 @@ export class RegisterComponent implements OnInit {
 
   // destroy the previous session and remove error message if there is any
   ngOnInit() : void {
-    localStorage.setItem('current', JSON.stringify({ username: '', qIndex: '' }));
+    localStorage.setItem('current', JSON.stringify({ email: '', qIndex: '' }));
     this.errorRegistration = false;
   }
 }
