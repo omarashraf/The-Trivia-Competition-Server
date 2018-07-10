@@ -1,9 +1,8 @@
 var Admin = require("../models/admin");
 var User = require("../models/user");
-
+const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
-
-
+const config = require("../config/config");
 function loginAdmin(req, res, next) {
   console.log(req.body.email)
   console.log(req.body.password)
@@ -28,7 +27,7 @@ function loginAdmin(req, res, next) {
           if (isMatch && !err) {
             //authenticate user, if it's his first login
                       // Create token if the password matched and no error was thrown
-            const token = jwt.sign(user.toJSON(), config.jwtSecret);
+            const token = jwt.sign(admin.toJSON(), config.jwtSecret);
             res.status(200).json({
               success: true,
               message: 'Authentication successfull',

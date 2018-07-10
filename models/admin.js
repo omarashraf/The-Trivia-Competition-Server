@@ -15,22 +15,18 @@ var adminSchema = new mongoose.Schema({
     lowercase: true,
     unique: true,
     required:true,
-    index: true,
+    index: true
   },
   password:
   {
     type: String,
-    required:true,
+    required:true
   }
 });
 
-adminSchema.pre("save", ()=>
-{
-  console.log("save")
+adminSchema.pre('save', function (next) {
   const admin = this;
-  if (true)
-  {
-    console.log("hash")
+  if (this.isModified('password') || this.isNew) {
     bcrypt.genSalt(10, (err, salt) => {
       if (err) {
         return next(err);
