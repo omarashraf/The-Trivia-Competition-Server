@@ -1,5 +1,4 @@
-var User = require("../models/admin");
-const MailService = require("../services/mail_service");
+var Admin = require("../models/admin");
 const bcrypt = require("bcryptjs");
 
 
@@ -47,13 +46,6 @@ function loginAdmin(req, res, next) {
 }
 
 function registerAdmin(req, res, next) {
-    console.log("hello");
-    res.status(200).json({
-      success: true,
-      message: 'Authentication successfull',
-      token
-    });
-    /*
     var admin = new Admin(req.body);
     admin.save((err, user) =>{
       if(err)
@@ -78,7 +70,7 @@ function registerAdmin(req, res, next) {
           body: admin._idx
         })
       }
-    })*/
+    })
 }
 
 function registerNewAdmin(req, res) {

@@ -13,7 +13,6 @@ const router = express.Router();
 router.route('/login')
     .post(AdminCtrl.loginAdmin);
 
-router.route('/register')
-    .post(AdminCtrl.registerAdmin);
+router.post("/register", AdminCtrl.registerAdmin);
 
 module.exports = router;
