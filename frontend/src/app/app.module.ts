@@ -12,6 +12,7 @@ import { QuestionComponent } from './question/question.component';
 import { ResultComponent } from './result/result.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AdminComponent } from './admin/admin.component';
 
 // imported modules
 import { RegisterModule } from './register/register.module';
@@ -19,10 +20,12 @@ import { QuestionModule } from './question/question.module';
 import { ResultModule } from './result/result.module';
 import { LeaderboardModule } from './leaderboard/leaderboard.module';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { AdminModule } from './admin/admin.module';
 
 // imported services
 import { LoginService } from './services/login.service';
 import { QuestionManipulationService } from './services/question-manipulation.service';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -41,6 +44,9 @@ const appRoutes: Routes = [
   },
   {
     path: '', redirectTo: '/register', pathMatch: 'full'
+  },
+  {
+    path: 'admin',  component: AdminComponent
   }
 ]
 
@@ -51,7 +57,8 @@ const appRoutes: Routes = [
     QuestionComponent,
     ResultComponent,
     NavbarComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +78,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     LoginService,
-    QuestionManipulationService
+    QuestionManipulationService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

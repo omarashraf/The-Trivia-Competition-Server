@@ -2,14 +2,17 @@
   "name": "riseup_competition",
   "main": "express.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "~1.18.3",
     "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
     "express-validation": "^1.0.2",
     "joi": "^13.4.0",
-    "express": "^4.16.3",
-    "mongodb": "^3.0.10",
+    "mongodb": "^3.1.1",
     "mongoose": "^5.1.4",
-    "nodemailer": "^4.6.7"
+    "nodemailer": "^4.6.7",
+    "postman": "^0.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
