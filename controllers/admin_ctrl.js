@@ -1,8 +1,11 @@
 var Admin = require("../models/admin");
+var User = require("../models/user");
+const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
-
-
+const config = require("../config/config");
 function loginAdmin(req, res, next) {
+  console.log(req.body.email)
+  console.log(req.body.password)
     Admin.findOne({
       email: req.body.email
     }, (err, admin) => {
@@ -19,17 +22,19 @@ function loginAdmin(req, res, next) {
         });
       } else {
               // Check if password matches
-        Admin.comparePassword(req.body.password, (err, isMatch) => {
+              console.log("enter here")
+        admin.comparePassword(req.body.password, (err, isMatch) => {
           if (isMatch && !err) {
             //authenticate user, if it's his first login
                       // Create token if the password matched and no error was thrown
-            const token = jwt.sign(user.toJSON(), config.jwtSecret);
+            const token = jwt.sign(admin.toJSON(), config.jwtSecret);
             res.status(200).json({
               success: true,
               message: 'Authentication successfull',
               token
             });
           } else {
+            console.log(isMatch)
             res.status(401).json({
               sattus: '401',
               statustext: 'Unauthorized',
@@ -45,9 +50,14 @@ function loginAdmin(req, res, next) {
     });
 }
 
+
 function registerAdmin(req, res, next) {
-    var admin = new Admin(req.body);
-    admin.save((err, user) =>{
+    console.log(req.body);
+    var admin = new Admin ({
+      email: req.body.email,
+      password: req.body.password
+    });  
+    admin.save((err, admin) =>{
       if(err)
       {
         console.log(err)
@@ -70,26 +80,11 @@ function registerAdmin(req, res, next) {
           body: admin._idx
         })
       }
-    })
+    });
 }
 
-function registerNewAdmin(req, res) {
-  var user = new Admin ({
-    email: req.body.email,
-    score: 0
-  });
-  user.save(function(err) {
-    if (err) {
-      res.status(400).send(err);
-    }
-    else {
-      user = generateVerificationCode(user);
-      return res.send(user);
-    }
-  });
-}
+
 module.exports = {
    loginAdmin,
-   registerAdmin,
-   registerNewAdmin
+   registerAdmin
 }

@@ -3,7 +3,7 @@ const ENV = process.env;
 
 const config = 
 {
-    jwtSecrect: ENV.JWT_SECRET
+    jwtSecret: ENV.JWT_SECRET
 };
 
-export default config;
+module.exports = config;

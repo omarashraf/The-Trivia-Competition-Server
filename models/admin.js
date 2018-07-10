@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-var AdminSchema = new mongoose.Schema({
+
+var adminSchema = new mongoose.Schema({
   // username: {
   //   type: String,
   //   lowercase: true,
@@ -14,7 +15,7 @@ var AdminSchema = new mongoose.Schema({
     lowercase: true,
     unique: true,
     required:true,
-    index: true,
+    index: true
   },
   password:
   {
@@ -23,11 +24,9 @@ var AdminSchema = new mongoose.Schema({
   }
 });
 
-AdminSchema.pre("save", ()=>
-{
+adminSchema.pre('save', function (next) {
   const admin = this;
-  if (this.isModified("password") || this.isNew)
-  {
+  if (this.isModified('password') || this.isNew) {
     bcrypt.genSalt(10, (err, salt) => {
       if (err) {
         return next(err);
@@ -45,17 +44,15 @@ AdminSchema.pre("save", ()=>
   }
 });
 
-AdminSchema.methods.comparePassword = function(pw, cb)
-{
-  bcrypt.compare(pw, this.password, (err, isMatch)=>
-  {
-    if (err)
-    {
+adminSchema.methods.comparePassword = function (pw, cb) {
+  bcrypt.compare(pw, this.password, (err, isMatch) => {
+    if (err) {
       return cb(err);
     }
     cb(null, isMatch);
   });
-}
+};
 
-var Admin = mongoose.model('Admin', AdminSchema);
+
+var Admin = mongoose.model('Admin', adminSchema);
 module.exports = Admin;
