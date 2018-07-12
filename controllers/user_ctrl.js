@@ -25,19 +25,21 @@ function getUser(req, res) {
         }
         else {
           if(user) {
-            user = generateVerificationCode(user);
+            if(req.query.register == 'true') {
+              user = generateVerificationCode(user);
+            }
             res.send(user);
           }else {
             res.status(404).send({
               "message": "Not Found"
             })
-          }
-          
+          } 
         }
     })
 }
 
 function updateScore(req, res) {
+  console.log("UPDATING SCORE");
     var score = {
       score: req.body.score
     }
