@@ -11,6 +11,7 @@ var User = require("./models/user");
 var userCtrl = require("./controllers/user_ctrl");
 var userValidation = require("./validations/user_validations");
 var userRoutes = require("./routes/user_routes");
+var questionRoutes = require("./routes/question_routes");
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -27,6 +28,8 @@ app.get("/", userCtrl.testEndpoint);
 app.post("/register", validate(userValidation.register), userCtrl.registerUser);
 
 app.use('/users', userRoutes);
+
+app.use('/questions', questionRoutes);
 
 // app is running on port 3000
 // TODO: set port among env variables
