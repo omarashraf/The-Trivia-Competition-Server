@@ -19,10 +19,14 @@ import { QuestionModule } from './question/question.module';
 import { ResultModule } from './result/result.module';
 import { LeaderboardModule } from './leaderboard/leaderboard.module';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { PaginationModule } from 'ngx-bootstrap';
 
 // imported services
 import { LoginService } from './services/login.service';
 import { QuestionManipulationService } from './services/question-manipulation.service';
+import { QuestionGenresComponent } from './question-genres/question-genres.component';
+import { QuestionService } from './services/question.service';
+import { GenreQuestionsComponent } from './genre-questions/genre-questions.component';
 
 
 
@@ -41,6 +45,12 @@ const appRoutes: Routes = [
   },
   {
     path: '', redirectTo: '/register', pathMatch: 'full'
+  },
+  {
+    path: 'questions', component: QuestionGenresComponent
+  },
+  {
+    path: 'questions/:genre', component: GenreQuestionsComponent
   }
 ]
 
@@ -51,7 +61,9 @@ const appRoutes: Routes = [
     QuestionComponent,
     ResultComponent,
     NavbarComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    QuestionGenresComponent,
+    GenreQuestionsComponent
   ],
   imports: [
     BrowserModule,
@@ -67,11 +79,13 @@ const appRoutes: Routes = [
     LocalStorageModule.withConfig({
       prefix: 'my-app',
       storageType: 'localStorage'
-    })
+    }),
+    PaginationModule.forRoot()
   ],
   providers: [
     LoginService,
-    QuestionManipulationService
+    QuestionManipulationService,
+    QuestionService
   ],
   bootstrap: [AppComponent]
 })

@@ -170,7 +170,7 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
     this.getCurrentUser();
     this.questionManipulation.getQuestions().subscribe((res) => {
-        this.questions = res.json()["soceities_questions"];
+        this.questions = res.json();
         this.questionsLen = this.questions.length;
         this.shuffle();
     });

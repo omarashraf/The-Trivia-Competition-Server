@@ -19,7 +19,7 @@ export class QuestionManipulationService {
 
   // get questions to be prompted later on.
   getQuestions(): Observable<any> {
-    return this.http.get('../../assets/soceities_questions.json');
+    return this.http.get(this.domain + '/questions');
   }
 
   // get a list of top players, requires a limit on the number.

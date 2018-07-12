@@ -1,0 +1,54 @@
+<ct-navbar></ct-navbar>
+<!-- <div>
+  {{ genre }}
+</div>
+<div *ngFor='let question of questions'>
+  {{ question.question }}
+</div> -->
+<div class='container-fluid questions-container'>
+  <div>
+    <h3 class='title--styling'>{{ genre }}</h3>
+  </div>
+  <div>
+    <div class='questions-list' *ngFor='let question of selected_questions; let i = index'>
+        <div class='row'>
+          <div class='col-sm-8'>
+              <div class='questions-list__question'>{{(i+1)+(itemsPerPage*(page-1))}}- {{ question.question }}</div>
+          </div>
+          <div class='col-sm-4 questions-list__btns'>
+            <button type="button" class="btn btn-primary" (click)='editQuestion(question)'>Edit</button>
+            <button type="button" class="btn btn-danger"(click)='deleteQuestion(question)'>Delete</button>
+          </div>
+        </div>
+      <div>
+        <ol type='a' class='questions-list__options'>
+            <li [ngClass]="{'questions-list__correct-answer': question.a == question.correct_answer }">
+              {{ question.a }}
+            </li>
+            <li [ngClass]="{'questions-list__correct-answer': question.b == question.correct_answer }">
+              {{ question.b }}
+            </li>
+            <li [ngClass]="{'questions-list__correct-answer': question.c == question.correct_answer }">
+              {{ question.c }}
+            </li>
+            <li [ngClass]="{'questions-list__correct-answer': question.d == question.correct_answer }">
+              {{ question.d }}
+            </li>
+          </ol>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-6 col-md-offset-4 col-sm-6'>
+      <pagination class="pagination-lg"
+          [(ngModel)]="page"
+          [totalItems]="length"
+          [itemsPerPage]="itemsPerPage"
+          [maxSize]="maxSize"
+          [rotate]="false"
+          (pageChanged)="changePage($event)"
+          (numPages)="numPages = $event">
+      </pagination>
+    </div>
+  </div>
+</div>

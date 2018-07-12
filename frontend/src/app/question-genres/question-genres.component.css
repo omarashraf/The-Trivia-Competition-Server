@@ -1,0 +1,25 @@
+.title--styling{
+    text-align: center;
+    font-weight: bold;
+    border-bottom: solid lightgray;
+    margin-bottom: 20px;
+}
+.genres--alignment{
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+.genres__box{
+    /* border: 1px solid #00447C; */
+    padding: 10px 10px;
+    border-radius: 14px;
+    background-color: rgba(0, 68, 126,1);
+    color: white;
+}
+a.genres__box:hover, a.genres__box:active{
+    background-color: rgba(0, 68, 126,0.8);
+    text-decoration: none !important;
+}
+.genre-container{
+    padding-top: 80px;
+}
