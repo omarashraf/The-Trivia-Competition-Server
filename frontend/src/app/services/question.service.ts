@@ -20,4 +20,10 @@ export class QuestionService {
   getGenreQuestions(genre): Observable<any> {
     return this.http.get(this.domain + `/questions/${genre}`);
   }
+  deleteQuestion(question_id):Observable<any> {
+    return this.http.delete(this.domain + `/questions/${question_id}`);
+  }
+  updateQuestion(question_id, new_question):Observable<any> {
+    return this.http.put(this.domain + `/questions/${question_id}`, new_question);
+  }
 }

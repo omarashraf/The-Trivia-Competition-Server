@@ -19,7 +19,7 @@ import { QuestionModule } from './question/question.module';
 import { ResultModule } from './result/result.module';
 import { LeaderboardModule } from './leaderboard/leaderboard.module';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { PaginationModule } from 'ngx-bootstrap';
+import { PaginationModule, ModalModule, AlertModule } from 'ngx-bootstrap';
 
 // imported services
 import { LoginService } from './services/login.service';
@@ -80,7 +80,9 @@ const appRoutes: Routes = [
       prefix: 'my-app',
       storageType: 'localStorage'
     }),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    ModalModule.forRoot(),
+    AlertModule.forRoot()
   ],
   providers: [
     LoginService,
