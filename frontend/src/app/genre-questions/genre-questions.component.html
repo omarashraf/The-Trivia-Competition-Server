@@ -64,7 +64,7 @@
         <div class="modal-body text-center modal-body-enhancements">
           <p>Are you sure you want to delete this question?</p>
           <button type="button" class="btn btn-danger" (click)="confirmDelete()">Yes</button>
-          <button type="button" class="btn btn-primary" (click)="declineDelete()">No</button>
+          <button type="button" class="btn btn-primary" (click)="close()">No</button>
         </div>
       </div>
     </div>
@@ -103,6 +103,7 @@
               <input type="text" name="d" class="form-control" id="d" [ngModel]='modal_selected_question.d'>
             </div>
             <button type="submit" class="btn btn-success" (click)='confirmEdit(editForm.value)'>Submit</button>
+            <button type="submit" class="btn btn-danger" (click)='close()'>Cancel</button>
           </form>
         </div>
       </div>

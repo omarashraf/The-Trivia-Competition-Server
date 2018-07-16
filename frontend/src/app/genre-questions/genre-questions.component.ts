@@ -1,7 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { QuestionService } from '../services/question.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -28,8 +27,7 @@ export class GenreQuestionsComponent implements OnInit {
   constructor(
     private questionService: QuestionService,
     private router: Router,
-    private route: ActivatedRoute,
-    private modalService: BsModalService) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.genre = this.route.snapshot.params['genre'];
@@ -39,7 +37,7 @@ export class GenreQuestionsComponent implements OnInit {
       this.changePage({ page: this.page, itemsPerPage: this.itemsPerPage })
     });
   }
-  public changePage(page: any, data: Array<any> = this.questions) {
+  changePage(page: any, data: Array<any> = this.questions) {
     this.page = page.page;
     let start = (page.page - 1) * page.itemsPerPage;
     let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
@@ -47,10 +45,6 @@ export class GenreQuestionsComponent implements OnInit {
     this.successful_alert = false;
     this.failed_alert = false;
   }
-  public editQuestion(question: any) {
-    console.log(question);
-  }
-
   openDeleteConfirmationModal(modal: ModalDirective, question: any) {
     this.modal_selected_question = question;
     this.modalRef = modal;
@@ -70,7 +64,7 @@ export class GenreQuestionsComponent implements OnInit {
     });
     this.modalRef.hide();
   }
-  declineDelete() {
+  close() {
     this.modalRef.hide();
   }
   openEditModal(modal: ModalDirective, question: any) {
@@ -81,15 +75,10 @@ export class GenreQuestionsComponent implements OnInit {
   }
   confirmEdit(form) {
     form.correct_answer = form[form.correct_answer];
-    console.log(form);
     this.questionService.updateQuestion(this.modal_selected_question._id, form).subscribe((res) => {
       this.successful_alert = true;
-      this.questions = this.questions.filter((question) => {
-        if (question._id == this.modal_selected_question._id) {
-          question = res.json();
-        }
-      });
-      console.log(this.questions);
+      let questionIndex = this.questions.findIndex(question => question._id == this.modal_selected_question._id);
+      this.questions[questionIndex] = res.json();
       this.changePage({ page: this.page, itemsPerPage: this.itemsPerPage })
     }, (err) => {
       this.failed_alert = true;

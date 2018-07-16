@@ -26,4 +26,7 @@ export class QuestionService {
   updateQuestion(question_id, new_question):Observable<any> {
     return this.http.put(this.domain + `/questions/${question_id}`, new_question);
   }
+  addQuestion(new_question):Observable<any> {
+    return this.http.post(this.domain + '/questions', new_question);
+  }
 }
