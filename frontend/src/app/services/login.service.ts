@@ -32,5 +32,4 @@ export class LoginService {
     };
     return this.http.put(this.domain + `users/${email}/score`, body, { headers: this.headers });
   }
-
 }

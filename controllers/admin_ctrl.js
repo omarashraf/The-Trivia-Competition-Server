@@ -3,9 +3,9 @@ var User = require("../models/user");
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 const config = require("../config/config");
+
 function loginAdmin(req, res, next) {
-  console.log(req.body.email)
-  console.log(req.body.password)
+    console.log(req.headers);
     Admin.findOne({
       email: req.body.email
     }, (err, admin) => {
@@ -22,7 +22,6 @@ function loginAdmin(req, res, next) {
         });
       } else {
               // Check if password matches
-              console.log("enter here")
         admin.comparePassword(req.body.password, (err, isMatch) => {
           if (isMatch && !err) {
             //authenticate user, if it's his first login
@@ -83,6 +82,10 @@ function registerAdmin(req, res, next) {
     });
 }
 
+function validateToken(req, res, next)
+{
+  let token = JSON.parse(req._body).token;
+}
 
 module.exports = {
    loginAdmin,

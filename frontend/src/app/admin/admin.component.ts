@@ -19,18 +19,18 @@ export class AdminComponent implements OnInit {
     public email: string;
     public password: string;
     public score: number;
-    public errorRegistration: boolean = false;
-    public verificationCodeInput: boolean = false;
+    public adminError: boolean = false;
     public verificationCode: number;
     public enteredCode: number;
     public verificationError: boolean = false;
     public headers: Headers = new Headers();
 
-    constructor(
-    private http: Http,
-    private AuthService: AuthService,
-    private router: Router,
-    private localStorageService: LocalStorageService 
+    constructor
+    (
+        private http: Http,
+        private AuthService: AuthService,
+        private router: Router,
+        private localStorageService: LocalStorageService 
     ) {}
     onSubmitAdmin(): void {
         console.log(this.email + "..." + this.password);
@@ -38,18 +38,24 @@ export class AdminComponent implements OnInit {
             this.email !== "" && 
             this.email !== undefined && 
             this.password !== "" && 
-            this.password !== undefined) {
-                
-                this.AuthService.AdminLogin(this.email, this.password).subscribe((res) => {
-                    console.log(res);
-                  });
+            this.password !== undefined
+        ) {
+                this.AuthService.AdminLogin(this.email, this.password)
+                .subscribe((res) => {
+                    console.log(res),
+                    localStorage.setItem('jwtToken', JSON.parse(res._body).token),
+                    this.adminError = false
+                },err =>
+                    this.adminError = true  
+            );
         }
         else {
-          this.errorRegistration = true;
+          this.adminError = true;
         }
     }
+    
     ngOnInit() : void {
         localStorage.setItem('current', JSON.stringify({ email: '', qIndex: '' }));
-        this.errorRegistration = false;
+        this.adminError = false;
     }
 }

@@ -11,7 +11,7 @@ var User = require("./models/user");
 var userCtrl = require("./controllers/user_ctrl");
 var userValidation = require("./validations/user_validations");
 var userRoutes = require("./routes/user_routes");
-var AdminRoutes = require("./routes/admin_routes")
+var AdminRoutes = require("./routes/admin_routes");
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
