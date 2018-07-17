@@ -31,6 +31,7 @@ import { QuestionService } from './services/question.service';
 import { GenreQuestionsComponent } from './genre-questions/genre-questions.component';
 
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth.guard';
 
 
 const appRoutes: Routes = [
@@ -50,10 +51,10 @@ const appRoutes: Routes = [
     path: '', redirectTo: '/register', pathMatch: 'full'
   },
   {
-    path: 'questions', component: QuestionGenresComponent
+    path: 'questions', component: QuestionGenresComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'questions/:genre', component: GenreQuestionsComponent
+    path: 'questions/:genre', component: GenreQuestionsComponent, canActivate: [AuthGuard]
   },
   {
     path: 'admin/login',  component: AdminComponent
@@ -95,7 +96,8 @@ const appRoutes: Routes = [
     LoginService,
     QuestionManipulationService,
     QuestionService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

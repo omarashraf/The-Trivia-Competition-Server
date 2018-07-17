@@ -50,6 +50,8 @@ export class QuestionGenresComponent implements OnInit {
     else {
       let new_question = question_form.value;
       new_question['genre'] = new_question['genre'] != 'other' ? new_question['genre'] : new_question['other_genre'];
+      let correct_answer = new_question['correct_answer'];
+      new_question['correct_answer'] = new_question[correct_answer];
       this.questionService.addQuestion(new_question).subscribe((res)=>{
        if(new_question.other_genre) {
          this.genres.push(new_question['other_genre'])

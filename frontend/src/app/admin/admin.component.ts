@@ -16,7 +16,7 @@ import { environment } from '../../environments/environment';
 export class AdminComponent implements OnInit {
 
     public email: string;
-    public password: string;;
+    public password: string;
     public adminError: boolean = false;
 
     constructor
@@ -35,18 +35,17 @@ export class AdminComponent implements OnInit {
         ) {
             this.AuthService.AdminLogin(this.email, this.password)
                 .subscribe((res) => {
-                    console.log(res),
-                        localStorage.setItem('jwtToken', JSON.parse(res._body).token),
-                        this.adminError = false
-                }, err =>
-                        this.adminError = true
+                    localStorage.setItem('jwtToken', JSON.parse(res._body).token);
+                    this.adminError = false;
+                }, (err) => {
+                        this.adminError = true;
+                    }
                 );
         }
         else {
             this.adminError = true;
         }
     }
-
     ngOnInit(): void {
         localStorage.setItem('current', JSON.stringify({ email: '', qIndex: '' }));
         this.adminError = false;
