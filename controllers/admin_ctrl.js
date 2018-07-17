@@ -9,16 +9,13 @@ function loginAdmin(req, res, next) {
     Admin.findOne({
       email: req.body.email
     }, (err, admin) => {
-      if (err) throw err;
+      if (err) {
+        res.status(400).json(err);
+      };
       if (!admin) {
-        res.status(401).json({
-          sattus: '401',
-          statustext: 'Unauthorized',
-          errors: [{
-            messages: [
-              'Wrong email or password'
-            ]
-          }]
+        res.status(404).json({
+          status: '404',
+          body: 'not found'
         });
       } else {
               // Check if password matches
@@ -80,11 +77,6 @@ function registerAdmin(req, res, next) {
         })
       }
     });
-}
-
-function validateToken(req, res, next)
-{
-  let token = JSON.parse(req._body).token;
 }
 
 module.exports = {

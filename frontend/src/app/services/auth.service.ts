@@ -10,7 +10,6 @@ export class AuthService {
   public domain = environment.apiUrl;
   constructor(private http: Http) {
     // adding content-type for all requests in this service
-    this.headers.append( 'Authorization', `Bearer ${this.getToken()}`);
     this.headers.append('Content-Type', 'application/json');
   } 
   
