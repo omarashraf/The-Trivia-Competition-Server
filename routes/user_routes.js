@@ -23,7 +23,6 @@ router.route('/:email/score')
 /*
   - get a specific user using email
 */
-
 router.route('/:email')
     .get(userCtrl.getUser);
 
