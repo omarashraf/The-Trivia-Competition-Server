@@ -17,7 +17,7 @@ function sendEmail(receiverEmail, Subject, Body) {
       from: "trivia@dell.com",
       to: receiverEmail,
       subject: Subject,
-      text: Body
+      html: Body
     };
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
