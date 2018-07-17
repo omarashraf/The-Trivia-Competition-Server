@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
 
   // register new user and validate that there is no error
   registerNewUser(registrationData, email): void {
-    this.loginService.getCurrentUserInfo(email).subscribe((res) => {
+    this.loginService.getCurrentUserInfo(email, true).subscribe((res) => {
       if (res["_body"] === "") {
         this.errorRegistration = false;
         this.loginService.registerNewUser(registrationData).subscribe((res) => {

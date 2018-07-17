@@ -16,8 +16,8 @@ export class LoginService {
   }
 
   // get the info associated with a certain user
-  getCurrentUserInfo(email: String): Observable<any> {
-    return this.http.get(this.domain + `/users/${email}`, { headers: this.headers });
+  getCurrentUserInfo(email: String, register: boolean=false): Observable<any> {
+    return this.http.get(this.domain + `/users/${email}?register=${register}`, { headers: this.headers });
   }
 
   // register new user
@@ -30,7 +30,6 @@ export class LoginService {
     let body = {
       "score": score
     };
-    return this.http.put(this.domain + `users/${email}/score`, body, { headers: this.headers });
+    return this.http.put(this.domain + `/users/${email}/score`, body, { headers: this.headers });
   }
-
 }

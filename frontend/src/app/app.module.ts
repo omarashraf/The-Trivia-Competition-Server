@@ -12,6 +12,7 @@ import { QuestionComponent } from './question/question.component';
 import { ResultComponent } from './result/result.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AdminComponent } from './admin/admin.component';
 
 // imported modules
 import { RegisterModule } from './register/register.module';
@@ -20,6 +21,7 @@ import { ResultModule } from './result/result.module';
 import { LeaderboardModule } from './leaderboard/leaderboard.module';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { PaginationModule, ModalModule, AlertModule } from 'ngx-bootstrap';
+import { AdminModule } from './admin/admin.module';
 
 // imported services
 import { LoginService } from './services/login.service';
@@ -28,6 +30,7 @@ import { QuestionGenresComponent } from './question-genres/question-genres.compo
 import { QuestionService } from './services/question.service';
 import { GenreQuestionsComponent } from './genre-questions/genre-questions.component';
 
+import { AuthService } from './services/auth.service';
 
 
 const appRoutes: Routes = [
@@ -51,6 +54,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'questions/:genre', component: GenreQuestionsComponent
+  },
+  {
+    path: 'admin/login',  component: AdminComponent
   }
 ]
 
@@ -63,7 +69,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     LeaderboardComponent,
     QuestionGenresComponent,
-    GenreQuestionsComponent
+    GenreQuestionsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +94,8 @@ const appRoutes: Routes = [
   providers: [
     LoginService,
     QuestionManipulationService,
-    QuestionService
+    QuestionService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

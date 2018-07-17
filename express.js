@@ -12,10 +12,12 @@ var userCtrl = require("./controllers/user_ctrl");
 var userValidation = require("./validations/user_validations");
 var userRoutes = require("./routes/user_routes");
 var questionRoutes = require("./routes/question_routes");
+var AdminRoutes = require("./routes/admin_routes")
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use("/admin", AdminRoutes);
 
 // endpoint for testing
 app.get("/", userCtrl.testEndpoint);
@@ -26,7 +28,6 @@ app.get("/", userCtrl.testEndpoint);
   - score is set to 0 initially
 */
 app.post("/register", validate(userValidation.register), userCtrl.registerUser);
-
 app.use('/users', userRoutes);
 
 app.use('/questions', questionRoutes);
@@ -42,11 +43,8 @@ app.use((err, req, res, next) => {
 });
 
 // db connection through mongoose and printing status in console
-mongoose.connect(mongoDB, function(err, res) {
-  if (err) {
-    console.log("Error --> "+ err);
-  }
-  else {
-    console.log("Succeeded DB connection");
-  }
+mongoose.connect(mongoDB).then(()=>{
+	console.log("Connected to Database");
+}).catch((err)=>{
+	console.log("Connection to Database error\n ", err);
 });

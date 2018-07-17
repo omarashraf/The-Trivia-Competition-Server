@@ -116,7 +116,7 @@ export class QuestionComponent implements OnInit {
     this.now = newM + ":" + newS;
     if (newM == 0 && Number(newS) == 0) {
       this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
-        this.currentScore = res.json()[0]["score"];
+        this.currentScore = res.json()["score"];
       });
       this.questionManipulation.wrongAnswer();
       this.questionManipulation.setTimesUp();
