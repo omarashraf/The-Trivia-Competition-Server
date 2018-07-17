@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import "rxjs";
 
-
 @Injectable()
 export class AuthService {
   public headers: Headers = new Headers();
@@ -16,5 +15,10 @@ export class AuthService {
   
   AdminLogin(email, password): Observable<any> {
     return this.http.post(this.domain + "/admin/login", {email, password}, { headers: this.headers });
+  }
+  
+  getToken() : string
+  {
+    return localStorage.getItem('jwtToken');
   }
 }

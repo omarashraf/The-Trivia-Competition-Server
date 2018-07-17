@@ -28,7 +28,6 @@ import { QuestionManipulationService } from './services/question-manipulation.se
 import { AuthService } from './services/auth.service';
 
 
-
 const appRoutes: Routes = [
   {
     path: 'register', component: RegisterComponent
@@ -46,7 +45,7 @@ const appRoutes: Routes = [
     path: '', redirectTo: '/register', pathMatch: 'full'
   },
   {
-    path: 'admin',  component: AdminComponent
+    path: 'admin/login',  component: AdminComponent
   }
 ]
 
