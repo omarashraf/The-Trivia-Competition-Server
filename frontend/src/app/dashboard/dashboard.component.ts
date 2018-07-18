@@ -28,7 +28,6 @@ export class DashboardComponent implements OnInit {
       this.adminService.iniviteAdmin(email).subscribe((res) => {
         this.invitationSuccess = true;
       }, (err) => {
-        console.log(err);
         this.invitationErr = true;
       });
     }
