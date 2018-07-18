@@ -32,4 +32,9 @@ export class LoginService {
     };
     return this.http.put(this.domain + `/users/${email}/score`, body, { headers: this.headers });
   }
+
+  //check if user is admin
+  isAdmin(): boolean {
+    return localStorage.getItem('jwtToken')? true: false;
+  }
 }
