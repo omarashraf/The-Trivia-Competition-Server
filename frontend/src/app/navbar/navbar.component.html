@@ -6,7 +6,8 @@
             </span>
         </div>
         <div class="navbar-header navbar__right" style="float: right;">
-            <span class="navbar-brand navbar__current">{{ current }}</span>
+            <button class="navbar__btns" (click)="logout()" [hidden]="!isAdmin" ><span class="glyphicon glyphicon-off navbar__icon" aria-hidden="true"></span>Logout</button>
+            <!-- <span class="navbar-brand navbar__current">{{ current }}</span> -->
         </div>
         <div class="clr"></div>
     </div>

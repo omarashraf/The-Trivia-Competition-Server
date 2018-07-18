@@ -1,13 +1,15 @@
 var User = require("../models/user");
+const MailService = require("../services/mail_service");
 
 function testEndpoint(req, res) {
     res.send("Homepage");
 }
 
 function getLeaderboard(req, res) {
-    User.find({}).sort({score: -1}).limit(parseInt(req.body.limit)).exec(function(err, docs) {
+  console.log("Leaderboard");
+    User.find({}).sort({score: -1}).limit(parseInt(req.query.limit)).exec(function(err, docs) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         res.send(docs);
@@ -16,24 +18,35 @@ function getLeaderboard(req, res) {
 }
 
 function getUser(req, res) {
-    User.find({ username: req.body.username }, function(err, user) {
+  console.log("FINDING USER");
+    User.findOne({ email: req.params.email }, function(err, user) {
         if (err) {
-        res.send('err --> ', err);
+          res.status(400).send(err);
         }
         else {
-        res.send(user);
+          if(user) {
+            if(req.query.register == 'true') {
+              user = generateVerificationCode(user);
+            }
+            res.send(user);
+          }else {
+            res.status(404).send({
+              "message": "Not Found"
+            })
+          } 
         }
     })
 }
 
 function updateScore(req, res) {
+  console.log("UPDATING SCORE");
     var score = {
       score: req.body.score
     }
   
-    User.findOneAndUpdate({ username: req.body.username}, score, {new: true}, function(err, user) {
+    User.findOneAndUpdate({ email: req.params.email}, score, {new: true}, function(err, user) {
      if (err) {
-       res.send(err);
+       res.status(400).send(err);
      }
      else {
         res.send(user);
@@ -43,17 +56,29 @@ function updateScore(req, res) {
 
 function registerUser(req, res) {
     var user = new User ({
-      username: req.body.username,
+      email: req.body.email,
       score: 0
     });
     user.save(function(err) {
       if (err) {
-        res.send("error");
+        res.status(400).send(err);
       }
       else {
-        res.send("ok");
+        user = generateVerificationCode(user);
+        return res.send(user);
       }
     });
+}
+
+function generateVerificationCode(user) {
+  user = JSON.parse(JSON.stringify(user));
+  verificationCode = Math.floor(1000 + Math.random() * 10000);
+  MailService.sendEmail(user['email'],
+    'Welcome to Trivia Competition',
+    'Your Verification Code is '+verificationCode
+  );
+  user["verificationCode"] = verificationCode;
+  return user;
 }
 
 module.exports = {

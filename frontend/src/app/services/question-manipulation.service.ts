@@ -14,18 +14,17 @@ export class QuestionManipulationService {
 
   constructor(private http: Http) {
     // adding content-type for all requests in this service
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    this.headers.append('Content-Type', 'application/json');
   }
 
   // get questions to be prompted later on.
   getQuestions(): Observable<any> {
-    return this.http.get('../../assets/soceities_questions.json');
+    return this.http.get(this.domain + '/questions');
   }
 
   // get a list of top players, requires a limit on the number.
   topPlayers(limit: string): Observable<any> {
-    let scoreParam = "limit=" + limit;
-    return this.http.post(this.domain + "/leaderboard", scoreParam, { headers: this.headers });
+    return this.http.get(this.domain + "/users/leaderboard?limit=" + limit);
   }
 
   // set wrong answer flag, when user gets a an answer wrong

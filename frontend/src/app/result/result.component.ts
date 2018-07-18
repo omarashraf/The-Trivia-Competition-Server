@@ -43,19 +43,16 @@ export class ResultComponent implements OnInit {
 
   // get current session info
   getCurrentSession(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('current'))["username"];
+    this.currentUser = JSON.parse(localStorage.getItem('current'))["email"];
     this.getCurrentUserScore();
   }
 
   // get current score of the current user.
   getCurrentUserScore(): void {
     this.loginService.getCurrentUserInfo(this.currentUser).subscribe((res) => {
-      if (res === "" || res === undefined) {
-        this.getCurrentUserScore();
-      }
-      else {
-        this.finalScore = res.json()[0]["score"];
-      }
+      this.finalScore = res.json()["score"];
+    }, (error) => {
+      this.router.navigate(['./register']);
     });
   }
 

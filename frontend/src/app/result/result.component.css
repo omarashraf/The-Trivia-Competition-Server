@@ -87,9 +87,16 @@
 
 .card--end__card {
   margin-top: 80px;
+  min-width: 350px;
 }
 
 .current-user {
   color: green;
   font-weight: bold;
+}
+
+@media screen and (max-width: 1265px) {
+  .table {
+    font-size: 1em;
+  }
 }

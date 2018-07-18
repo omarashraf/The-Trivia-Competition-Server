@@ -1,0 +1,70 @@
+<div class='container-fluid genre-container'>
+  <alert *ngIf='successful_alert' type="success">
+    <strong>Done!</strong>
+  </alert>
+  <alert *ngIf='failed_alert' type="danger">
+    <strong>Error!</strong>
+  </alert>
+  <div>
+    <h3 class='title--styling'>Question Genres</h3>
+  </div>
+  <div class='row'>
+    <div class='col-sm-3 genres--alignment' *ngFor='let genre of genres'>
+      <a class='genres__box' (click)='getQuestionsByGenre(genre)'>{{ genre }}</a>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-4 col-md-offset-4 col-padding'>
+      <button type='button' class='btn btn-success btn-lg btn-wide' (click)='openAddModal(addModal)'>
+        <span class='glyphicon glyphicon-plus sign'></span>Add Question</button>
+    </div>
+  </div>
+  <div bsModal #addModal='bs-modal' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='dialog-sizes-name1'>
+    <alert *ngIf='error_form_alert' type="danger">
+      <strong>Please fill in required fields!</strong>
+    </alert>
+    <div class='modal-dialog modal-lg'>
+      <div class='modal-content'>
+        <div class='modal-body text-center modal-body-enhancements'>
+          <form #addForm='ngForm' ngNativeValidate>
+            <div class='form-group'>
+              <label for='question'>Question</label>
+              <input required type='text' name='question' class='form-control' id='question' placeholder='required' ngModel>
+            </div>
+            <div class='form-group'>
+              <label>
+                <input required type='radio' value='a' name='correct_answer' ngModel>A:</label>
+              <input required type='text' name='a' class='form-control' id='a' placeholder='required' ngModel>
+            </div>
+            <div class='form-group'>
+              <label>
+                <input required type='radio' value='b' name='correct_answer' ngModel>B:</label>
+              <input required type='text' name='b' class='form-control' id='b' placeholder='required' ngModel>
+            </div>
+            <div class='form-group'>
+              <label>
+                <input required type='radio' value='c' name='correct_answer' ngModel>C:</label>
+              <input required type='text' name='c' class='form-control' id='c' placeholder='required' ngModel>
+            </div>
+            <div class='form-group'>
+              <label>
+                <input required type='radio' value='d' name='correct_answer' ngModel>D:</label>
+              <input required type='text' name='d' class='form-control' id='d' placeholder='required' ngModel>
+            </div>
+            <div class='form-group'>
+              <label for='genre'>Genre:</label>
+              <select [attr.required]='!enter_genre'  #select name='genre' ngModel>
+                <option *ngFor='let genre of genres' [value]='genre'>{{genre}}</option>
+                <option [value]="'other'">other</option>
+              </select>
+              <input required *ngIf='select.value=="other"' type='text' name='other_genre' class='form-control' id='other_genre' placeholder='Enter required genre'
+                ngModel>
+            </div>
+            <button type='submit' class='btn btn-success' (click)='addQuestion(addForm)'>Submit</button>
+            <button type='submit' class='btn btn-danger' (click)='close()'>Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
