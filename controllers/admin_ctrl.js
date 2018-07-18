@@ -1,5 +1,6 @@
 var Admin = require("../models/admin");
 var User = require("../models/user");
+var Question = require("../models/question");
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 const config = require("../config/config");
@@ -94,8 +95,24 @@ function inviteAdmin(req, res) {
     }
   })
 }
+async function stats(req, res) {
+  console.log('Stats');
+  let users = await User.find({});
+  let questions = await Question.find({});
+  let genres = await Question.find().distinct('genre');
+  res.status(200).json({
+    status: '200',
+    message: 'Success',
+    body: {
+      users: users.length,
+      questions: questions.length,
+      genres: genres.length
+    }
+  });
+}
 module.exports = {
   loginAdmin,
   registerAdmin,
-  inviteAdmin
+  inviteAdmin,
+  stats
 }

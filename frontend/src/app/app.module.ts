@@ -30,8 +30,9 @@ import { QuestionGenresComponent } from './question-genres/question-genres.compo
 import { QuestionService } from './services/question.service';
 import { GenreQuestionsComponent } from './genre-questions/genre-questions.component';
 
-import { AuthService } from './services/auth.service';
+import { AdminService } from './services/admin.service';
 import { AuthGuard } from './services/auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const appRoutes: Routes = [
@@ -58,6 +59,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'admin/login',  component: AdminComponent
+  },
+  {
+    path: 'admin/dashboard', component: DashboardComponent, canActivate: [AuthGuard]
   }
 ]
 
@@ -71,7 +75,8 @@ const appRoutes: Routes = [
     LeaderboardComponent,
     QuestionGenresComponent,
     GenreQuestionsComponent,
-    AdminComponent
+    AdminComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +101,7 @@ const appRoutes: Routes = [
     LoginService,
     QuestionManipulationService,
     QuestionService,
-    AuthService,
+    AdminService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

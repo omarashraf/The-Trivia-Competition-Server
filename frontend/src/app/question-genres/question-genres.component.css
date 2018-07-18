@@ -21,11 +21,11 @@ a.genres__box:hover, a.genres__box:active{
     background-color: rgba(0, 68, 126,0.8);
     text-decoration: none !important;
 }
-.genre-container{
+/* .genre-container{
     padding-top: 80px;
-}
+} */
 .btn-wide {
-    width: 50%;
+    width: 75%;
 }
 .col-padding{
     padding: 30px 0px;
