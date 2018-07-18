@@ -15,9 +15,10 @@ export class AuthGuard implements CanActivate {
   {
     if (localStorage.getItem('jwtToken') !== null )
     {
-        //add admin routes
         return true;
     }
+    this.router.navigate(['./admin/login']);
+    console.log('HERE')
     return false;
   }
 }
