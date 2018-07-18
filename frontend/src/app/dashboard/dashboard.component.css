@@ -59,10 +59,16 @@
     margin-bottom: 20px;
 }
 
-.dashboard-container__section--border {
+.dashboard-container__section--border-coral {
     border-top: solid 4px #D74324; 
     padding-bottom: 30px;
 }
+
+.dashboard-container__section--border-blue {
+    border-top: solid 4px #00447C; 
+    padding-bottom: 30px;
+} 
+
 .col--align{
     text-align: center;
 }
@@ -75,3 +81,35 @@
     font-size: 18px;
     padding-right: 10px;
 }
+.row--margining {
+    margin-bottom: 30px;
+}
+
+.gold {
+    color: #DAA520;
+  }
+  
+  .silver {
+    color: #C0C0C0;
+  }
+  
+  .bronze {
+    color: #CD7F32;
+  }
+  
+  .table {
+    font-size: 18px;
+    border: none;
+  }
+  
+  .table tr {
+     border-bottom: 1px solid #ddd;
+     padding: 15px 0px;
+  }
+
+  .red {
+    color: red;
+  }
+  .table>tbody>tr>td {
+      border: none;
+  }

@@ -29,14 +29,14 @@
       </div>
     </div>
   </div>
-  <div class='row'>
+  <div class='row row--margining'>
     <div class='col-md-6 col-sm-12'>
       <div class='dashboard-container__section'>
         <app-question-genres></app-question-genres>
       </div>
     </div>
     <div class='col-md-6 col-sm-12'>
-      <div class='dashboard-container__section dashboard-container__section--border'>
+      <div class='dashboard-container__section dashboard-container__section--border-coral'>
         <alert *ngIf='invitationSuccess' type="success">
           <strong>Invitation Sent!</strong>
         </alert>
@@ -56,6 +56,41 @@
             </div>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+  <div class='row row--margining'>
+    <div class='col-md-4 col-md-offset-4 col-sm-12'>
+      <div class='dashboard-container__section dashboard-container__section--border-blue'>
+        <h3 class='dashboard-container__section__title'>Leader Board</h3>
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let player of topPlayers; let i = index;">
+              <ng-container *ngIf="i == 0">
+                <td>
+                  <span class="glyphicon glyphicon-glass gold"></span>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="i == 1">
+                <td>
+                  <span class="	glyphicon glyphicon-glass silver"></span>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="i == 2">
+                <td>
+                  <span class="glyphicon glyphicon-glass bronze"></span>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="i != 0 && i != 1 && i != 2">
+                <td>
+                  <span class="glyphicon glyphicon-bookmark red"></span>
+                </td>
+              </ng-container>
+              <td>{{ player.email }}</td>
+              <td>{{ player.score }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
