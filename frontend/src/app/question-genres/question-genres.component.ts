@@ -13,10 +13,10 @@ export class QuestionGenresComponent implements OnInit {
 
   public genres: any[];
   modalRef: ModalDirective;
-  successful_alert: boolean;
-  failure_alert: boolean;
-  enter_genre: boolean;
-  error_form_alert: boolean;
+  successfulAlert: boolean;
+  failedAlert: boolean;
+  enterGenre: boolean;
+  formErrorAlert: boolean;
 
   constructor(
     private questionService: QuestionService,
@@ -35,33 +35,39 @@ export class QuestionGenresComponent implements OnInit {
     this.router.navigate([`./questions/${genre}`])
   }
   openAddModal(modal: ModalDirective) {
+    this.hideAlerts();
     this.modalRef = modal;
     this.modalRef.show();
   }
   close() {
     this.modalRef.hide();
-    this.enter_genre = false;
-    this.error_form_alert = false;
+    this.enterGenre = false;
+    this.hideAlerts();
   }
-  addQuestion(question_form: NgForm) {
-    if (!question_form.valid) {
-      this.error_form_alert = true;
+  addQuestion(questionForm: NgForm) {
+    this.hideAlerts();
+    if (!questionForm.valid) {
+      this.formErrorAlert = true;
     }
     else {
-      let new_question = question_form.value;
-      new_question['genre'] = new_question['genre'] != 'other' ? new_question['genre'] : new_question['other_genre'];
-      let correct_answer = new_question['correct_answer'];
-      new_question['correct_answer'] = new_question[correct_answer];
-      this.questionService.addQuestion(new_question).subscribe((res)=>{
-       if(new_question.other_genre) {
-         this.genres.push(new_question['other_genre'])
-       }
-       this.successful_alert = true; 
-      },(err) => {
-        console.log(err);
-        this.failure_alert = true;
+      let newQuestion = questionForm.value;
+      newQuestion['genre'] = newQuestion['genre'] != 'other' ? newQuestion['genre'] : newQuestion['other_genre'];
+      let correctAnswer = newQuestion['correct_answer'];
+      newQuestion['correct_answer'] = newQuestion[correctAnswer];
+      this.questionService.addQuestion(newQuestion).subscribe((res) => {
+        if (newQuestion.other_genre) {
+          this.genres.push(newQuestion['other_genre'])
+        }
+        this.successfulAlert = true;
+      }, (err) => {
+        this.failedAlert = true;
       });
       this.close();
     }
+  }
+  hideAlerts() {
+    this.successfulAlert = false;
+    this.failedAlert = false;
+    this.formErrorAlert = false;
   }
 }

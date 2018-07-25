@@ -47,6 +47,9 @@ export class AdminComponent implements OnInit {
         }
     }
     ngOnInit(): void {
+        if (localStorage.getItem('jwtToken') != null) {
+            this.router.navigate(['./admin/dashboard']);
+        }
         localStorage.setItem('current', JSON.stringify({ email: '', qIndex: '' }));
         this.adminError = false;
     }

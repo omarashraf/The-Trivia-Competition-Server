@@ -6,17 +6,17 @@
   {{ question.question }}
 </div> -->
 <div class='container-fluid questions-container'>
-  <alert *ngIf='successful_alert' type="success">
+  <alert *ngIf='successfulAlert' type="success">
     <strong>Done!</strong>
   </alert>
-  <alert *ngIf='failed_alert' type="danger">
+  <alert *ngIf='failedAlert' type="danger">
     <strong>Error!</strong>
   </alert>
   <div>
     <h3 class='title--styling'>{{ genre }}</h3>
   </div>
   <div>
-    <div class='questions-list' *ngFor='let question of selected_questions; let i = index'>
+    <div class='questions-list' *ngFor='let question of selectedQuestions; let i = index'>
       <div class='row'>
         <div class='col-sm-8'>
           <div class='questions-list__question'>{{(i+1)+(itemsPerPage*(page-1))}}- {{ question.question }}</div>
@@ -73,36 +73,36 @@
     <div class='modal-dialog modal-lg'>
       <div class="modal-content">
         <div class="modal-body text-center modal-body-enhancements">
-          <form #editForm="ngForm" *ngIf='modal_selected_question'>
+          <form #editForm="ngForm" *ngIf='modalSelectedQuestion'>
             <div class="form-group">
               <label for="question">Question</label>
-              <input type="text" name="question" class="form-control" id="question" [ngModel]='modal_selected_question.question'>
+              <input type="text" name="question" class="form-control" id="question" [ngModel]='modalSelectedQuestion.question'>
             </div>
             <div class="form-group">
               <label>
-                <input type="radio" value='a' name="correct_answer" [checked]="modal_selected_question.correct_answer === modal_selected_question.a"
-                  [ngModel]="correct_answer">A:</label>
-              <input type="text" name="a" class="form-control" id="a" [ngModel]='modal_selected_question.a'>
+                <input type="radio" value='a' name="correct_answer" [checked]="modalSelectedQuestion.correct_answer === modalSelectedQuestion.a"
+                  [ngModel]="correctAnswer">A:</label>
+              <input type="text" name="a" class="form-control" id="a" [ngModel]='modalSelectedQuestion.a'>
             </div>
             <div class="form-group">
               <label>
-                <input type="radio" value='b' name="correct_answer" [checked]="modal_selected_question.correct_answer === modal_selected_question.b"
-                  [ngModel]="correct_answer">B:</label>
-              <input type="text" name="b" class="form-control" id="b" [ngModel]='modal_selected_question.b'>
+                <input type="radio" value='b' name="correct_answer" [checked]="modalSelectedQuestion.correct_answer === modalSelectedQuestion.b"
+                  [ngModel]="correctAnswer">B:</label>
+              <input type="text" name="b" class="form-control" id="b" [ngModel]='modalSelectedQuestion.b'>
             </div>
             <div class="form-group">
               <label>
-                <input type="radio" value='c' name="correct_answer" [checked]="modal_selected_question.correct_answer === modal_selected_question.c"
-                  [ngModel]="correct_answer">C:</label>
-              <input type="text" name="c" class="form-control" id="c" [ngModel]='modal_selected_question.c'>
+                <input type="radio" value='c' name="correct_answer" [checked]="modalSelectedQuestion.correct_answer === modalSelectedQuestion.c"
+                  [ngModel]="correctAnswer">C:</label>
+              <input type="text" name="c" class="form-control" id="c" [ngModel]='modalSelectedQuestion.c'>
             </div>
             <div class="form-group">
               <label>
-                <input type="radio" value='d' name="correct_answer" [checked]="modal_selected_question.correct_answer === modal_selected_question.d"
-                  [ngModel]="correct_answer">D:</label>
-              <input type="text" name="d" class="form-control" id="d" [ngModel]='modal_selected_question.d'>
+                <input type="radio" value='d' name="correct_answer" [checked]="modalSelectedQuestion.correct_answer === modalSelectedQuestion.d"
+                  [ngModel]="correctAnswer">D:</label>
+              <input type="text" name="d" class="form-control" id="d" [ngModel]='modalSelectedQuestion.d'>
             </div>
-            <button type="submit" class="btn btn-success" (click)='confirmEdit(editForm.value)'>Submit</button>
+            <button type="submit" class="btn btn-success" (click)='confirmEdit(editForm.value)'>Save</button>
             <button type="submit" class="btn btn-danger" (click)='close()'>Cancel</button>
           </form>
         </div>
