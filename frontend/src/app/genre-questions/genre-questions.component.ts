@@ -13,16 +13,16 @@ export class GenreQuestionsComponent implements OnInit {
   modalRef: ModalDirective;
   genre: String = '';
   questions: any[];
-  selected_questions: any[];
+  selectedQuestions: any[];
   public page: number = 1;
   public itemsPerPage: number = 5;
   public maxSize: number = 5;
   public numPages: number;
   public length: number;
-  private modal_selected_question: any;
-  successful_alert = false;
-  failed_alert = false;
-  correct_answer: string;
+  private modalSelectedQuestion: any;
+  successfulAlert = false;
+  failedAlert = false;
+  correctAnswer: string;
 
   constructor(
     private questionService: QuestionService,
@@ -34,58 +34,75 @@ export class GenreQuestionsComponent implements OnInit {
     this.questionService.getGenreQuestions(this.genre).subscribe((res) => {
       this.questions = res.json();
       this.length = this.questions.length;
-      this.changePage({ page: this.page, itemsPerPage: this.itemsPerPage })
+      this.changePage({ page: this.page, itemsPerPage: this.itemsPerPage });
     });
   }
   changePage(page: any, data: Array<any> = this.questions) {
+    this.hideAlerts();
     this.page = page.page;
     let start = (page.page - 1) * page.itemsPerPage;
     let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
-    this.selected_questions = data.slice(start, end);
-    this.successful_alert = false;
-    this.failed_alert = false;
+    this.selectedQuestions = data.slice(start, end);
+    if(this.selectedQuestions.length <= 0) {
+        this.router.navigate(['./admin/dashboard']);
+    }
   }
   openDeleteConfirmationModal(modal: ModalDirective, question: any) {
-    this.modal_selected_question = question;
+    this.hideAlerts();
+    this.modalSelectedQuestion = question;
     this.modalRef = modal;
     this.modalRef.show();
   }
   confirmDelete() {
-    this.questionService.deleteQuestion(this.modal_selected_question._id).subscribe((res) => {
-      this.successful_alert = true;
+    this.hideAlerts();
+    this.questionService.deleteQuestion(this.modalSelectedQuestion._id).subscribe((res) => {
+      this.successfulAlert = true;
       this.questions.filter((question) => {
-        if (question._id == this.modal_selected_question._id) {
+        if (question._id == this.modalSelectedQuestion._id) {
           this.questions.splice(this.questions.indexOf(question), 1);
         }
       });
       this.changePage({ page: this.page, itemsPerPage: this.itemsPerPage });
     }, (err) => {
-      this.failed_alert = true;
+      this.failedAlert = true;
     });
     this.modalRef.hide();
-  }
-  close() {
-    this.modalRef.hide();
+    this.successfulAlert = true;
   }
   openEditModal(modal: ModalDirective, question: any) {
-    this.modal_selected_question = question;
+    this.hideAlerts();
+    this.modalSelectedQuestion = question;
     this.getCorrectAnswer();
     this.modalRef = modal;
     this.modalRef.show();
   }
   confirmEdit(form) {
+    this.hideAlerts();
     form.correct_answer = form[form.correct_answer];
-    this.questionService.updateQuestion(this.modal_selected_question._id, form).subscribe((res) => {
-      this.successful_alert = true;
-      let questionIndex = this.questions.findIndex(question => question._id == this.modal_selected_question._id);
+    this.questionService.updateQuestion(this.modalSelectedQuestion._id, form).subscribe((res) => {
+      this.successfulAlert = true;
+      let questionIndex = this.questions.findIndex(question => question._id == this.modalSelectedQuestion._id);
       this.questions[questionIndex] = res.json();
       this.changePage({ page: this.page, itemsPerPage: this.itemsPerPage })
     }, (err) => {
-      this.failed_alert = true;
+      this.failedAlert = true;
     });
     this.modalRef.hide();
   }
   getCorrectAnswer() {
-    this.correct_answer = Object.keys(this.modal_selected_question)[Object.values(this.modal_selected_question).findIndex((answer) => answer == this.modal_selected_question.correct_answer)];
+    let questionKeys = Object.keys(this.modalSelectedQuestion);
+    for (let i = 0; i < questionKeys.length; i++) {
+      if (this.modalSelectedQuestion[questionKeys[i]] == this.modalSelectedQuestion.correct_answer && questionKeys[i] != 'correct_answer') {
+        this.correctAnswer = questionKeys[i];
+      }
+    }
+  }
+  hideAlerts() {
+    this.successfulAlert = false;
+    this.failedAlert = false;
+  }
+  close() {
+    this.hideAlerts();
+    this.modalRef.hide();
   }
 }

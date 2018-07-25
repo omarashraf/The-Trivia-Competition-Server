@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
     });
   }
   inviteAdmin(invitationForm: NgForm) {
+    this.hideAlerts();
     if (invitationForm.valid) {
       let email = invitationForm.value.email;
       this.adminService.iniviteAdmin(email).subscribe((res) => {
@@ -38,5 +39,9 @@ export class DashboardComponent implements OnInit {
         this.invitationErr = true;
       });
     }
+  }
+  hideAlerts() {
+    this.invitationErr = false;
+    this.invitationSuccess = false;
   }
 }
