@@ -12,7 +12,7 @@
 - `cd` to the root folder and run the following (for running th backend):
 
     ```
-    node express.js
+    npm start
     ```
 
 - `cd` to the `frontend` folder within the root one, and to run the frontend:
