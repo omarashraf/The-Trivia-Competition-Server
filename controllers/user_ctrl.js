@@ -6,7 +6,6 @@ function testEndpoint(req, res) {
 }
 
 function getLeaderboard(req, res) {
-  console.log("Leaderboard");
     User.find({}).sort({score: -1}).limit(parseInt(req.query.limit)).exec(function(err, docs) {
       if (err) {
         res.status(400).send(err);
@@ -18,7 +17,6 @@ function getLeaderboard(req, res) {
 }
 
 function getUser(req, res) {
-  console.log("FINDING USER");
     User.findOne({ email: req.params.email }, function(err, user) {
         if (err) {
           res.status(400).send(err);
@@ -39,7 +37,6 @@ function getUser(req, res) {
 }
 
 function updateScore(req, res) {
-  console.log("UPDATING SCORE");
     var score = {
       score: req.body.score
     }

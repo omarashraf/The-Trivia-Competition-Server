@@ -1,7 +1,6 @@
 var Question = require('../models/question');
 
 function getQuestions(req, res) {
-    console.log("FETCHING ALL QUESTIONS");
     Question.find({}, (err, questions) => {
         if (err) {
             res.status(400).send(err);
@@ -11,7 +10,6 @@ function getQuestions(req, res) {
     });
 }
 function getQuestionsByGenre(req, res) {
-    console.log("FETCHING QUESTIONS BY GENRE ");
     Question.find({genre: req.params.genre}, (err, questions) => {
         if (err) {
             res.status(400).send(err);
@@ -21,7 +19,6 @@ function getQuestionsByGenre(req, res) {
     });
 }
 function deleteQuestion(req, res) {
-    console.log("DELETING QUESTION")
     Question.findByIdAndRemove(req.params.id, (err, question) => {
         if (err) {
             res.status(400).send(err);
@@ -37,7 +34,6 @@ function deleteQuestion(req, res) {
     });
 }
 function addQuestion(req, res) {
-    console.log("ADDING QUESTION");
     var question = new Question(req.body);
     question.save((err) => {
         if (err) {
@@ -48,7 +44,6 @@ function addQuestion(req, res) {
     });
 }
 function updateQuestion(req, res) {
-    console.log("UPDATING QUESTION");
     Question.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, question) => {
         if (err) {
             res.status(400).send(err);
@@ -64,7 +59,6 @@ function updateQuestion(req, res) {
     });
 }
 function getGenres(req, res) {
-    console.log("FETCHING GENRES");
     Question.find().distinct('genre', (err, genres) => {
         if (err) {
             res.status(400).send(err);

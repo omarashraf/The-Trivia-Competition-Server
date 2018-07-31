@@ -8,7 +8,6 @@ const os = require('os');
 const mailService = require('../services/mail_service');
 
 function loginAdmin(req, res, next) {
-  console.log('ADMIN LOGIN');
   Admin.findOne({
     email: req.body.email
   }, (err, admin) => {
@@ -43,14 +42,12 @@ function loginAdmin(req, res, next) {
   });
 }
 function registerAdmin(req, res, next) {
-  console.log('REGISTERING ADMIN');
   var admin = new Admin({
     email: req.body.email,
     password: req.body.password
   });
   admin.save((err, admin) => {
     if (err) {
-      console.log(err)
       return res.status(409).json({
         status: '409',
         message: 'User already exists'
@@ -72,7 +69,6 @@ function registerAdmin(req, res, next) {
   });
 }
 function inviteAdmin(req, res) {
-  console.log('INVITING ADMIN');
   var admin = new Admin({
     email: req.body.email,
     password: config.defaultPassword
@@ -96,7 +92,6 @@ function inviteAdmin(req, res) {
   })
 }
 async function stats(req, res) {
-  console.log('Stats');
   let users = await User.find({});
   let questions = await Question.find({});
   let genres = await Question.find().distinct('genre');
