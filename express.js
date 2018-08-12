@@ -58,7 +58,7 @@ app.use((err, req, res, next) => {
 });
 
 // db connection through mongoose and printing status in console
-mongoose.connect(config.mongoDB).then(() => {
+mongoose.connect(`mongodb://${config.dbHost}/${config.dbName}`).then(() => {
   winstonInstance.info('Connected to database');
 }).catch((err) => {
   winstonInstance.error("Connection to Database error\n ", err);

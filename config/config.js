@@ -9,7 +9,9 @@ const config =
     adminLoginUrl: ENV.ADMIN_LOGIN_URL,
     env: ENV.ENVIRONMENT,
     port: ENV.PORT,
-    mongoDB: ENV.MONGODB
+    mongoDB: ENV.MONGODB,
+    dbHost: ENV.DB_HOST,
+    dbName: ENV.DB_NAME
 };
 
 module.exports = config;
