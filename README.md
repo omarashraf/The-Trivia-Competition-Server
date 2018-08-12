@@ -27,3 +27,11 @@
 ## Logging
 
 Universal logging library [express-winston](https://www.npmjs.com/package/express-winston) is used for logging. It has support for multiple transports.  A transport is essentially a storage device for your logs. Each instance of a winston logger can have multiple transports configured at different levels. For example, one may want error logs to be stored in a persistent remote location (like a database), but all logs output to the console or a local file. We just log to the console for simplicity, you can configure more transports as per your requirement.
+
+## Docker
+
+#### Using Docker Compose for Development
+```sh
+# service restarts on file change
+docker-compose up -d
+```

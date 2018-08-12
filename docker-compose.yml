@@ -1,0 +1,27 @@
+version: "3"
+services:
+  the_trivia_competition_server:
+    restart: always
+    build: .
+    environment: 
+      - DEFAULT_PASSWORD=P@$$w0rd123!
+      - ADMIN_LOGIN_URL=localhost:4200/admin/login
+      - JWT_SECRET=Secret
+      - ENVIRONMENT=development
+      - PORT=3000
+      - DB_HOST=mongodb
+      - DB_NAME=riseup_db
+    ports:
+      - "3000:3000"
+    volumes: 
+      - .:/usr/src/app  
+    depends_on:
+      - mongodb
+  
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - ./data:/data/db
+    ports:
+        - "27017:27017"
