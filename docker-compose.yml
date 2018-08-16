@@ -5,7 +5,7 @@ services:
     build: .
     environment: 
       - DEFAULT_PASSWORD=P@$$w0rd123!
-      - ADMIN_LOGIN_URL=localhost:4200/admin/login
+      - ADMIN_LOGIN_URL=http://10.207.80.227:4200/admin/login
       - JWT_SECRET=Secret
       - ENVIRONMENT=development
       - PORT=3000
