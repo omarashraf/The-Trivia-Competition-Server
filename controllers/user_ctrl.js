@@ -68,8 +68,8 @@ function registerUser(req, res) {
 }
 
 function generateVerificationCode(user) {
-  user = JSON.parse(JSON.stringify(user));
-  verificationCode = Math.floor(1000 + Math.random() * 10000);
+  var user = JSON.parse(JSON.stringify(user));
+  var verificationCode = Math.floor(1000 + Math.random() * 10000);
   MailService.sendEmail(user['email'],
     'Welcome to Trivia Competition',
     'Your Verification Code is '+verificationCode
