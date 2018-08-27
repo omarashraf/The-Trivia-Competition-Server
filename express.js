@@ -15,8 +15,9 @@ var userRoutes = require("./routes/user_routes");
 var questionRoutes = require("./routes/question_routes");
 var AdminRoutes = require("./routes/admin_routes")
 
-app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.json());
+
 
 // enable detailed API logging in dev env
 if (config.env === 'development') {
