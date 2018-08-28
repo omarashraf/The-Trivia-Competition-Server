@@ -63,7 +63,7 @@ function registerAdmin(req, res, next) {
       return res.status(200).json({
         status: '200',
         message: 'Success',
-        body: admin._idx
+        body: admin._id
       })
     }
   });
@@ -77,17 +77,27 @@ function inviteAdmin(req, res) {
     if (err) {
       return res.status(400).json({
         status: 400,
-        message: 'Invited admin already registered'
+        message: 'Bad request',
+        body: 'Admin has already been invited!'
       });
     } else {
       var body = `<p>You now have Admin privileges to Trivia Competition. In order to access these privileges please login using the following <a href="${config.adminLoginUrl}">link</a>.</p>`
         + '<p>Use the following credentials:</p>' + `<p>Email:${admin.email}</p>` + `<p>Password:${config.defaultPassword}</p>`;
-      mailService.sendEmail(admin['email'], 'Trivia Competition: Admin Privilages', body);
-      return res.status(200).json({
-        status: '200',
-        message: 'Success',
-        body: 'Added admin'
-      })
+      mailService.sendEmail(admin['email'], 'Trivia Competition: Admin Privilages', body)
+        .then(() => {
+          return res.status(200).json({
+            status: '200',
+            message: 'Success',
+            body: 'Admin has been invited!'
+          });
+        })
+        .catch((err) => {
+          return res.status(400).json({
+            status: '400',
+            message: 'Bad request',
+            body: 'Could not send email to invited admin!'
+          });
+        });
     }
   })
 }
