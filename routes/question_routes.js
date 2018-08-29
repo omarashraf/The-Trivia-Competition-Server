@@ -8,13 +8,13 @@ var questionCtrl = require("../controllers/question_ctrl");
 var questionValidation = require("../validations/question_validations");
 const router = express.Router();
 
-router.route('/x')
-    .get(questionCtrl.getQuestions)
+router.route('')
+    .get(expressJwt({secret: config.jwtSecret}), questionCtrl.getQuestions)
     .post( validate(questionValidation.addQuestion),questionCtrl.addQuestion);
 router.route('/genres')
     .get(expressJwt({secret: config.jwtSecret}), questionCtrl.getGenres)
 router.route('/timer')
-    .get( questionCtrl.getTimer)
+    .get(expressJwt({secret: config.jwtSecret}), questionCtrl.getTimer)
 
 router.route('/:genre')
 .get(expressJwt({secret: config.jwtSecret}), questionCtrl.getQuestionsByGenre);
