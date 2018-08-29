@@ -19,7 +19,10 @@ router.route('/register')
 router.route('/invite')
     .post(expressJwt({secret: config.jwtSecret}), AdminCtrl.inviteAdmin);
 
+router.route('/setTimer')
+    .post(AdminCtrl.addTimer);
+
 router.route('/stats')
-    .get(expressJwt({secret: config.jwtSecret}), AdminCtrl.stats);
+    .get( AdminCtrl.stats);
 
 module.exports = router;

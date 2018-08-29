@@ -1,6 +1,7 @@
 var Admin = require("../models/admin");
 var User = require("../models/user");
 var Question = require("../models/question");
+var Timer = require ('../models/timer');
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 const config = require("../config/config");
@@ -115,9 +116,32 @@ async function stats(req, res) {
     }
   });
 }
+
+function addTimer(req,res, next){
+
+  var timer = new Timer({ timer : req.body.timer});
+  timer.save((err,timer)=>{
+    if(err){
+      return res.status(400).json({
+        status: 400,
+        message: 'Bad request',
+      
+      });
+    }
+    else{
+      return res.status(200).json({
+        status: '200',
+        message: 'Success',
+        body: 'timer Added'
+      });
+    }
+
+  })
+}
 module.exports = {
   loginAdmin,
   registerAdmin,
   inviteAdmin,
-  stats
+  stats,
+  addTimer
 }

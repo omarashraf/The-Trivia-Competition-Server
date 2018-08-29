@@ -1,4 +1,5 @@
 var Question = require('../models/question');
+var Timer = require('../models/timer')
 
 function getQuestions(req, res) {
     Question.find({}, (err, questions) => {
@@ -70,11 +71,24 @@ function getGenres(req, res) {
     });
 }
 
+function getTimer(req,res){
+    Timer.find({}, {},{sort: {'_id':-1}, limit: 1} ,(err,timer) => {
+        if (err) {
+            res.status(400).send(err);
+        } else {
+            res.send(timer);
+        }
+    });
+
+
+}
+
 module.exports = {
     addQuestion,
     getQuestions,
     updateQuestion,
     deleteQuestion,
     getGenres,
-    getQuestionsByGenre
+    getQuestionsByGenre,
+    getTimer
 }
