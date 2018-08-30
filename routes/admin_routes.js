@@ -4,22 +4,24 @@ var app = express();
 var cors = require('cors');
 const validate = require('express-validation');
 const config = require("../config/config");
-
-var Admin = require("../models/admin");
-var AdminCtrl = require("../controllers/admin_ctrl");
+var adminCtrl = require("../controllers/admin_ctrl");
+var adminValidation = require("../validations/admin_validations")
 
 const router = express.Router();
 
 router.route('/login')
-    .post(AdminCtrl.loginAdmin);
+    .post(adminCtrl.loginAdmin);
 
 router.route('/register')
-    .post(AdminCtrl.registerAdmin);
+    .post(adminCtrl.registerAdmin);
 
 router.route('/invite')
-    .post(expressJwt({secret: config.jwtSecret}), AdminCtrl.inviteAdmin);
+    .post(expressJwt({ secret: config.jwtSecret }), adminCtrl.inviteAdmin);
 
 router.route('/stats')
-    .get(expressJwt({secret: config.jwtSecret}), AdminCtrl.stats);
+    .get(expressJwt({ secret: config.jwtSecret }), adminCtrl.stats);
+
+router.route('/change-password')
+    .post(expressJwt({ secret: config.jwtSecret }), validate(adminValidation.changePassword), adminCtrl.changePassword);
 
 module.exports = router;
