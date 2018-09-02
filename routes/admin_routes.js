@@ -20,7 +20,7 @@ router.route('/invite')
     .post(expressJwt({ secret: config.jwtSecret }), adminCtrl.inviteAdmin);
 
 router.route('/setTimer')
-    .post( questionCtrl.addTimer);
+    .post(expressJwt({ secret: config.jwtSecret }), questionCtrl.addTimer);
 
 router.route('/stats')
     .get(expressJwt({ secret: config.jwtSecret }), adminCtrl.stats);

@@ -86,24 +86,32 @@ function getTimer(req,res){
 function addTimer(req,res, next){
 
     var timer = new Timer({ timer : req.body.timer});
-   
-    timer.save((err,timer)=>{
-      if(err){
-        return res.status(400).json({
-          status: 400,
-          message: 'Bad request',
-        
-        });
-      }
-      else{
-        return res.status(200).json({
-          status: '200',
-          message: 'Success',
-          body: 'timer Added'
-        });
-      }
-  
-    })
+    Timer.remove({},(err,timer)=>{
+    if(err){
+      return res.status(400).json({
+        status: 400,
+        message: 'Bad request',
+      
+      });
+    }
+   },timer.save((err,timer)=>{
+    if(err){
+      return res.status(400).json({
+        status: 400,
+        message: 'Bad request',
+      
+      });
+    }
+    else{
+      return res.status(200).json({
+        status: '200',
+        message: 'Success',
+        body: 'timer Added'
+      });
+    }
+
+  }));
+    
   }
 
 
