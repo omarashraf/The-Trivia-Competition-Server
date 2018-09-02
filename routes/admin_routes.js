@@ -5,6 +5,7 @@ var cors = require('cors');
 const validate = require('express-validation');
 const config = require("../config/config");
 var adminCtrl = require("../controllers/admin_ctrl");
+var questionCtrl = require("../controllers/question_ctrl");
 var adminValidation = require("../validations/admin_validations")
 
 const router = express.Router();
@@ -19,7 +20,7 @@ router.route('/invite')
     .post(expressJwt({ secret: config.jwtSecret }), adminCtrl.inviteAdmin);
 
 router.route('/setTimer')
-    .post(expressJwt({secret: config.jwtSecret}), AdminCtrl.addTimer);
+    .post( questionCtrl.addTimer);
 
 router.route('/stats')
     .get(expressJwt({ secret: config.jwtSecret }), adminCtrl.stats);
