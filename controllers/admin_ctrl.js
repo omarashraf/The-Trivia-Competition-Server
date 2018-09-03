@@ -1,6 +1,7 @@
 var Admin = require("../models/admin");
 var User = require("../models/user");
 var Question = require("../models/question");
+var Timer = require ('../models/timer');
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 const config = require("../config/config");
@@ -115,6 +116,8 @@ async function stats(req, res) {
     }
   });
 }
+
+
 function changePassword(req, res) {
   Admin.findOne({
     email: req.user.email

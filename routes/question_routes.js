@@ -9,15 +9,19 @@ var questionValidation = require("../validations/question_validations");
 const router = express.Router();
 
 router.route('')
-    .get(questionCtrl.getQuestions)
-    .post(expressJwt({secret: config.jwtSecret}), validate(questionValidation.addQuestion),questionCtrl.addQuestion);
+    .get( questionCtrl.getQuestions)
+    .post( validate(questionValidation.addQuestion),questionCtrl.addQuestion);
 router.route('/genres')
-    .get(expressJwt({secret: config.jwtSecret}), questionCtrl.getGenres);
+    .get(expressJwt({secret: config.jwtSecret}), questionCtrl.getGenres)
+router.route('/timer')
+    .get(questionCtrl.getTimer)
+
 router.route('/:genre')
 .get(expressJwt({secret: config.jwtSecret}), questionCtrl.getQuestionsByGenre);
 router.route('/:id')
 .delete(expressJwt({secret: config.jwtSecret}), validate(questionValidation.deleteQuestion), questionCtrl.deleteQuestion)
 .put(expressJwt({secret: config.jwtSecret}), validate(questionValidation.addQuestion), questionCtrl.updateQuestion);
+
 
 
 module.exports = router;
