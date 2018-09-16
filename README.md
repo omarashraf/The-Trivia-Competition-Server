@@ -16,13 +16,7 @@
     npm start
     ```
 
-- `cd` to the `frontend` folder within the root one, and to run the frontend:
-
-    ```
-    npm start
-    ```
-
-- The backend is running on port `3000`, `mongo` is running on port `27017`, and the frontend is running on port `4200`.
+- The backend is running on port `3000`, `mongo` is running on port `27017`.
 
 ## Logging
 
