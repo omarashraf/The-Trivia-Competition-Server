@@ -117,7 +117,6 @@ async function stats(req, res) {
   });
 }
 
-
 function changePassword(req, res) {
   Admin.findOne({
     email: req.user.email

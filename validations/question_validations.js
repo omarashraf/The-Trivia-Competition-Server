@@ -5,8 +5,6 @@ module.exports = {
             question: Joi.string().required(),
             a: Joi.string().required(),
             b: Joi.string().required(),
-            c: Joi.string().required(),
-            d: Joi.string().required(),
             correct_answer: Joi.string().required(),
             genre: Joi.string().required(),
         }
