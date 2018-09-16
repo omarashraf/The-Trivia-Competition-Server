@@ -16,11 +16,11 @@ var questionSchema = new mongoose.Schema({
     },
     c: {
         type: String,
-        required: true
+        required: false
     },
     d: {
         type: String,
-        required: true
+        required: false
     },
     correct_answer: {
         type: String,

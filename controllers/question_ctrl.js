@@ -11,7 +11,7 @@ function getQuestions(req, res) {
     });
 }
 function getQuestionsByGenre(req, res) {
-    Question.find({genre: req.params.genre}, (err, questions) => {
+    Question.find({ genre: req.params.genre }, (err, questions) => {
         if (err) {
             res.status(400).send(err);
         } else {
@@ -70,50 +70,46 @@ function getGenres(req, res) {
         }
     });
 }
-
-function getTimer(req,res){
-    Timer.find({}, {},{sort: {'_id':-1}, limit: 1} ,(err,timer) => {
+function getTimer(req, res) {
+    Timer.find({}, {}, { sort: { '_id': -1 }, limit: 1 }, (err, timer) => {
         if (err) {
             res.status(400).send(err);
         } else {
-            res.send(timer);
+            res.send(
+                {
+                    timer: timer[0]
+                }
+            );
         }
     });
-
-
 }
+function addTimer(req, res, next) {
+    var timer = new Timer({ timer: req.body.timer });
+    Timer.remove({}, (err, timer) => {
+        if (err) {
+            return res.status(400).json({
+                status: 400,
+                message: 'Bad request',
 
-function addTimer(req,res, next){
+            });
+        }
+    }, timer.save((err, timer) => {
+        if (err) {
+            return res.status(400).json({
+                status: 400,
+                message: 'Bad request',
 
-    var timer = new Timer({ timer : req.body.timer});
-    Timer.remove({},(err,timer)=>{
-    if(err){
-      return res.status(400).json({
-        status: 400,
-        message: 'Bad request',
-      
-      });
-    }
-   },timer.save((err,timer)=>{
-    if(err){
-      return res.status(400).json({
-        status: 400,
-        message: 'Bad request',
-      
-      });
-    }
-    else{
-      return res.status(200).json({
-        status: '200',
-        message: 'Success',
-        body: 'timer Added'
-      });
-    }
-
-  }));
-    
-  }
-
+            });
+        }
+        else {
+            return res.status(200).json({
+                status: '200',
+                message: 'Success',
+                body: 'timer Added'
+            });
+        }
+    }));
+}
 
 module.exports = {
     addQuestion,
