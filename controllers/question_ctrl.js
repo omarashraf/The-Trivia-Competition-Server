@@ -75,11 +75,7 @@ function getTimer(req, res) {
         if (err) {
             res.status(400).send(err);
         } else {
-            res.send(
-                {
-                    timer: timer[0]
-                }
-            );
+            res.send(timer[0]);
         }
     });
 }
