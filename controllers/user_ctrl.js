@@ -73,14 +73,15 @@ function registerUser(req, res) {
       res.status(400).send(err);
     }
     else {
-      user = await generateVerificationCode(user);
-      if (!user.verificationCode) {
-        return res.status(400).send({
-          "status": "400",
-          "message": "Bad request",
-          "body": "Could not generate verifcation code. Please try again!"
-        });
-      }
+      // ** uncomment to use verification code
+      // user = await generateVerificationCode(user);
+      // if (!user.verificationCode) {
+      //   return res.status(400).send({
+      //     "status": "400",
+      //     "message": "Bad request",
+      //     "body": "Could not generate verifcation code. Please try again!"
+      //   });
+      // }
       return res.send(user);
     }
   });
